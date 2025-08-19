@@ -1,0 +1,102 @@
+/* JobPreviewClientDashboard.module.css */
+
+
+.jobsContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+    gap: 1rem;
+    width: 39vw;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.jobPostPreview {
+    background-color: #ffffff;
+    border: none;
+    padding: 0.8rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease-in-out;
+    height: 150px;
+    min-width: 38vw;
+    overflow: hidden;
+}
+.jobLink{
+    text-decoration: none;
+}
+
+.jobPostPreview:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.jobPostPreview h3 {
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.4rem;
+}
+
+.jobPostPreview p {
+    margin: 0.25rem 0;
+    color: #666;
+    line-height: 1.4;
+    font-size: smaller;
+
+}
+
+.jobPostPreview p strong {
+    color: black;
+    font-weight: 600;
+}
+
+
+/* MODULAR WHOLE JOBDIV FROM JOBDETAILS - REUSABLEJOBDETAILS - clientdashboard jobreusable */
+.wholeJobDiv{
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+background-color: white;
+height: 87vh;
+    margin:  0 auto;
+    padding: 0.5rem 2rem;
+    overflow-y: scroll;
+
+}
+
+
+/* Tablets and large phones (landscape mode) */
+@media (max-width: 1024px) {
+    .jobsContainer {
+        display: flex;
+        flex-direction: column;
+        padding: 0 1rem;
+        gap: 1rem;
+        width: 39vw;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .jobPostPreview{
+        margin: 0.5rem 0;
+    }
+
+    .wholeJobDiv{
+
+       width: 80%;
+    
+    }
+}
+
+/* Small tablets and large smartphones */
+@media (max-width: 768px) {
+    /* CSS */
+}
+
+/* Smaller smartphones */
+@media (max-width: 480px) {
+
+
+   
+}
