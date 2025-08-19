@@ -92,14 +92,6 @@ export default function App() {
     <div className="App">
       {/* <Navbar handleLogout={handleLogout} user={user} /> */}
       <Routes>
-         {/* Parent Route for HomePage */}
-         <Route path={PATHS.HOMEPAGE} element={<HomePage user={user} authenticate={authenticate} handleLogout={handleLogout} />}>
-          {/* Nested Signup and Login Routes */}
-          <Route index element={<Navigate to={PATHS.LOGINPAGE} />} /> {/* Redirect root to Login by default */}
-
-          <Route path={PATHS.SIGNUPPAGE} element={<Signup authenticate={authenticate} />} />
-          <Route path={PATHS.LOGINPAGE} element={<Login authenticate={authenticate} />} />
-        </Route>
         
     {/* Dashboard and Nested Routes */}
         <Route path="dashboard/*" element={
