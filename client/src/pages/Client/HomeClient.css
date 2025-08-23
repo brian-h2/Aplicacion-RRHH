@@ -16,6 +16,11 @@
     padding: 4rem 0rem;
 }
 
+.intro img{
+    max-width: 1200px;
+    width: 100%;
+}
+
 .portada-gestion-about{
     width: 100%;
 }
@@ -40,14 +45,19 @@
 
 .second-part-about{
     height:70%;
-color: black;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-margin: 2rem 0 4rem;
-gap: 1rem;
-text-align: center;
+    color: black;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: 2rem 0 4rem;
+   gap: 1rem;
+   text-align: center;
+}
+
+.second-part-about h1{
+    font-family: 'Inter';
+    font-weight: 600;
 }
 
 
@@ -59,6 +69,8 @@ text-align: center;
     align-items: center;
     gap: 3rem;
     height: fit-content;
+    font-family: 'Inter';
+    font-weight: 300;
 }
 
 
@@ -66,22 +78,21 @@ text-align: center;
     display: flex;
     flex-direction: column;
     /* justify-content: space-between; */
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.5s ease-in-out;
     align-items: center;
-box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.203);
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.203);
 
 }
 
 .ventajas-competitivas:hover{
-    transform: scale(1.2); /* Increase size by 20% */
-
+    transform: scale(1.10); /* Increase size by 20% */
 }
 
 .ventajas-competitivas img{
 
 width: 25rem;
 height: 15rem;
-margin: 2rem;
+margin: 1.5rem;;
 filter: grayscale(60%);
 padding: 0.1rem;
 box-shadow: 1px 2px 3px black;
@@ -158,7 +169,7 @@ box-shadow: 1px 2px 3px black;
     color: white;
   }
 
-  @media (max-width: 1024px) {
+@media (max-width: 1024px) {
     .images-ventajas-competitivas{
         display: flex;
         margin: 2rem 0;
@@ -178,7 +189,7 @@ box-shadow: 1px 2px 3px black;
 @media (max-width: 768px) {
     .intro{
         font-size: 1rem;
-        padding: 0 2rem;
+        padding: 2rem;
     }
     
     .first-part-about p {
