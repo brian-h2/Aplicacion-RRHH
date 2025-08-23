@@ -3,7 +3,7 @@ import portada_gestion from "./images/portada_gestion.jpg"
 import mercado_laboral from "./images/mercadolaboral.jpg"
 import networking from "./images/networking.webp"
 import gestion_proceso from "./images/gestion_proceso.png"
-import nombrelogo from "./images/nombrelogo.png"
+import nombrelogo from "./images/nombrelogo-2.jpeg"
 import EmailSubscription from "./EmailSubscription"
 
 

@@ -1,58 +1,284 @@
+/* Variables para mantener consistencia */
+:root {
+  --nav-h: 6rem;
+  --nav-bg: #006c97fa;
+  --nav-text: #ffffff;
+  --nav-text-muted: #EAF6FF;
+  --nav-accent: #96C11F;
+  --shadow-1: 0 1px 6px rgba(0,0,0,.18);
+}
+
+/* Contenedor principal del navbar */
 .navbar {
-    height: 6rem;
-    box-shadow: 0 1px 3px rgb(0, 0, 0);
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    gap: 2rem;
-    padding: 0 0 1rem;
-
+  height: var(--nav-h);
+  box-shadow: var(--shadow-1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: var(--nav-bg);
+  color: var(--nav-text);
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
 }
 
-.navbar img {
-    height: 5.5rem;
-    padding: 0 2rem;
+/* Contenedor interno para centrar y limitar ancho */
+.navbar .container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-.navbar a{
-    text-decoration: none;
-    color: black;
-    font-weight: bolder;
+/* Logo */
+.navbar .navbar-img {
+  flex-shrink: 0;
 }
 
-.btn-navbar {
-text-decoration: none;
-border: none;
-justify-content: center;
-align-items: center;
-padding: 2rem 1rem 0.5rem;
-margin: 0 ;
-cursor: pointer;
-}
-.btn-navbar:hover{
-    color:#006d97;
+.navbar .navbar-img img {
+  height: 68px;
+  width: auto;
+  display: block;
 }
 
+.navbar .navbar-img a {
+  display: block;
+  line-height: 0;
+}
+
+/* Grupo de enlaces */
+.navbar .navbar-etiquetas {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-left: auto;
+}
+
+/* Enlaces base */
+.navbar .navbar-etiquetas .btn-navbar {
+  position: relative;
+  text-decoration: none;
+  color: var(--nav-text);
+  font-weight: 600;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 1.050rem;
+  line-height: 1.2;
+  padding: 0.75rem 0.5rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+/* Subrayado animado */
+.navbar .navbar-etiquetas .btn-navbar::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
+  transform: translateX(-50%);
+  transition: width 0.25s ease-out;
+  border-radius: 2px;
+}
+
+/* Hover y Focus accesibles */
+.navbar .navbar-etiquetas .btn-navbar:hover,
+.navbar .navbar-etiquetas .btn-navbar:focus-visible {
+  color: var(--nav-text);
+  transform: translateY(-1px);
+}
+
+.navbar .navbar-etiquetas .btn-navbar:hover::after,
+.navbar .navbar-etiquetas .btn-navbar:focus-visible::after {
+  width: 80%;
+}
+
+/* Estado activo de NavLink (React Router) */
+.navbar .navbar-etiquetas .btn-navbar.active {
+  color: var(--nav-text);
+}
+
+.navbar .navbar-etiquetas .btn-navbar.active::after {
+  width: 80%;
+  background: var(--nav-accent);
+}
+
+/* Botón CTA destacado (opcional) */
+.navbar .navbar-etiquetas .btn-navbar.primary {
+  background: rgba(255,255,255,0.15);
+  border-radius: 24px;
+  padding: 0.75rem 1.25rem;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.navbar .navbar-etiquetas .btn-navbar.primary:hover,
+.navbar .navbar-etiquetas .btn-navbar.primary:focus-visible {
+  background: rgba(255,255,255,0.25);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.navbar .navbar-etiquetas .btn-navbar.primary::after {
+  display: none; /* Sin subrayado en botón CTA */
+}
+
+/* Botón hamburguesa (oculto por defecto) */
+.navbar .menu-toggle {
+  display: none;
+  background: transparent;
+  border: 0;
+  color: var(--nav-text);
+  padding: 0.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.navbar .menu-toggle:hover,
+.navbar .menu-toggle:focus-visible {
+  background: rgba(255,255,255,0.1);
+}
+
+.navbar .menu-toggle:focus-visible {
+  outline: 2px solid var(--nav-text);
+  outline-offset: 2px;
+}
+
+/* Breakpoints responsivos */
+
+/* Tablets grandes */
 @media (max-width: 1024px) {
-
-}
-
-/* Small tablets and large smartphones */
-@media (max-width: 768px) {
-
-}
-/* Smaller smartphones */
-@media (max-width: 480px) {
-.navbar{
-gap: 0;
-justify-content: center;
-text-align: center;
-align-items: center
-;}
-
-.navbar img{
-    width: 30%;
-    height: 90%;
-}
-}
+  .navbar {
+    height: 5.5rem;
+    padding: 0 0.75rem;
+  }
   
+  .navbar .navbar-img img {
+    height: 44px;
+  }
+  
+  .navbar .navbar-etiquetas .btn-navbar {
+    font-size: 0.95rem;
+    gap: 1.25rem;
+  }
+}
+
+/* Tablets y smartphones grandes */
+@media (max-width: 768px) {
+  .navbar .container {
+    justify-content: space-between;
+  }
+  
+  /* Mostrar botón hamburguesa */
+  .navbar .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    margin-left: auto;
+  }
+  
+  /* Menú colapsable */
+  .navbar .navbar-etiquetas {
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    background: var(--nav-bg);
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    margin-left: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    
+    /* Animación de entrada */
+    transform: translateY(-10px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  }
+  
+  /* Menú abierto */
+  .navbar .navbar-etiquetas.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  
+  /* Enlaces en mobile */
+  .navbar .navbar-etiquetas .btn-navbar {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0.75rem;
+    border-radius: 8px;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  
+  .navbar .navbar-etiquetas .btn-navbar:hover,
+  .navbar .navbar-etiquetas .btn-navbar:focus-visible {
+    background: rgba(255,255,255,0.1);
+    transform: none; /* Sin lift en mobile */
+  }
+  
+  /* Subrayado diferente en mobile */
+  .navbar .navbar-etiquetas .btn-navbar::after {
+    display: none; /* Sin subrayado en mobile */
+  }
+  
+  .navbar .navbar-img img {
+    height: 42px;
+  }
+}
+
+/* Smartphones */
+@media (max-width: 480px) {
+  .navbar {
+    height: 5rem;
+    padding: 0 0.5rem;
+  }
+  
+  .navbar .navbar-img img {
+    height: 38px;
+  }
+  
+  .navbar .navbar-etiquetas .btn-navbar {
+    font-size: 0.95rem;
+    padding: 0.875rem 0.5rem;
+  }
+  
+  .navbar .menu-toggle {
+    font-size: 1.25rem;
+  }
+}
+
+/* Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  .navbar .navbar-etiquetas .btn-navbar,
+  .navbar .navbar-etiquetas,
+  .navbar .menu-toggle {
+    transition: none;
+  }
+  
+  .navbar .navbar-etiquetas .btn-navbar::after {
+    transition: none;
+  }
+}
+
+/* Focus visible para navegación por teclado */
+.navbar .navbar-etiquetas .btn-navbar:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.8);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
