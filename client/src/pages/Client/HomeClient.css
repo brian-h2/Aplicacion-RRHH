@@ -1,25 +1,23 @@
 /* ABOUT PAGE */
+.about-me{
+    padding-top: 6rem;
+}
+
 .intro{
-    height: 50vh;
     margin: 0;
-display: flex;
-justify-content: center;
-align-items: center;
-text-align: left;
-font-size: 1.3rem;
-flex-direction: column;
-  transition: transform 1s ease-in, opacity 0.8s ease-out;
-
-  text-align: center;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    font-size: 1.3rem;
+    flex-direction: column;
+    transition: transform 1s ease-in, opacity 0.8s ease-out;
+    text-align: center;
+    padding: 4rem 0rem;
 }
 
-.intro img{
-    padding: 3rem;
-}
 .portada-gestion-about{
     width: 100%;
-    
 }
 
 .first-part-about  {
