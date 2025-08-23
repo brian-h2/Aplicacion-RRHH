@@ -42,7 +42,7 @@
     margin: 0;
     line-height: 2rem;
     text-align: center;
-
+    font-size: large;
 }
 
 /* .second-part-about{
@@ -116,6 +116,7 @@
  color: #444;  
  line-height: 1.4;
   font-weight: 500;
+
 }
 
 .third-part-about{
@@ -127,16 +128,21 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-        max-width: 105rem;
+    max-width: 105rem;
     margin: auto;
 }
 
+.third-part-about h1{
+    text-transform: uppercase;
+    text-align: center;
+}
+
 .third-part-about p{
-    padding: 1rem 2rem 1rem 2rem;;
+    padding: 3rem 8rem;;
     margin: 0;
     line-height: 2rem;
     text-align: center;
-
+    font-size: large;
 }
 
 .fourth-part-about-emailing {
@@ -251,6 +257,10 @@ width: 100%
     font-size: 1.1rem;
   }
 
+  .third-part-about p{
+        padding: 1rem 3rem;
+    }
+
     .fourth-part-about-emailing>* {
         width: 80%;
     }
@@ -271,10 +281,13 @@ width: 100%
 }
 /* Smaller smartphones */
 @media (max-width: 480px) {
-    .intro img{
-        width: 80%;
+    .first-part-about{
+        margin-top: 2.9rem
     }
 
+    .third-part-about p{
+        padding: 1rem 3rem;
+    }
 }
   
 /* finished about page */

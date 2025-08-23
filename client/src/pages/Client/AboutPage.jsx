@@ -1,8 +1,5 @@
 import React from 'react'
 import portada_gestion from "./images/portada_gestion.jpg"
-import mercado_laboral from "./images/mercadolaboral.jpg"
-import networking from "./images/networking.webp"
-import gestion_proceso from "./images/gestion_proceso.png"
 import nombrelogo from "./images/nombrelogo-3.png"
 import EmailSubscription from "./EmailSubscription"
 
@@ -111,7 +108,7 @@ export default function AboutPage() {
    
 </div>
 <div className="third-part-about">
-    <h1>NUESTRO SERVICIO DE SELECCION</h1>
+    <h1>NUESTRO SERVICIO DE SELECCIóN</h1>
     <p>
       Con el objetivo de brindar un servicio de calidad, nos focalizamos en detectar las necesidades de nuestros clientes, su cultura y estilos de trabajo.
       Para asegurar la calidad del proceso, contamos con una metodología diseñada por etapas bien definidas, la cual garantiza la excelencia y confiabilidad en los resultados.
