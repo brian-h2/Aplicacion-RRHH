@@ -42,19 +42,19 @@ export default function NavbarClient() {
           </NavLink>
 
           <NavLink
-            to="/clientdashboard/clientjobs"
-            className="btn-navbar"
-            onClick={closeMenu}
-          >
-            Oportunidades de empleo
-          </NavLink>
-
-          <NavLink
             to="/dashboard/post-job"
             className="btn-navbar"
             onClick={closeMenu}
           >
             ¿Qué hacemos?
+          </NavLink>
+
+          <NavLink
+            to="/clientdashboard/clientjobs"
+            className="btn-navbar"
+            onClick={closeMenu}
+          >
+            Oportunidades de empleo
           </NavLink>
 
           {/* Si querés un CTA destacado */}
