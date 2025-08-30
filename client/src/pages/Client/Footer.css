@@ -4,9 +4,9 @@
   color: rgb(255, 255, 255);
   font-family: 'Inter', sans-serif;
   text-align: center;
-  position: relative;
-  padding: 40px 20px;
-  animation: fadeIn 1.5s ease-in-out;
+  /* position: relative; */
+  padding: 2rem 4rem;
+  /* animation: fadeIn 1.5s ease-in-out; */
   background-image: url(https://cdn.abacus.ai/images/4480af9d-a8de-4886-ba31-4a2789c7760c.png);
   background-repeat: no-repeat;
   background-size: 100%;
