@@ -51,8 +51,13 @@ export default function NavbarClient() {
 
           <NavLink
             to="/clientdashboard/clientjobs"
-            className="btn-navbar"
+            className="btn-navbar "
             onClick={closeMenu}
+             style={{
+              backgroundColor: '#104a61',
+              borderRadius: '30rem',
+              padding: '0.8rem'
+            }}
           >
             Oportunidades de empleo
           </NavLink>
