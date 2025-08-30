@@ -281,7 +281,7 @@ width: 100%
 }
 /* Smaller smartphones */
 @media (max-width: 480px) {
-    .first-part-about{
+    .first-part-about{ 
         margin-top: 2.9rem
     }
 
