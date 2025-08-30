@@ -157,9 +157,13 @@
     color: black;
   }
   
+  
   .fourth-part-about-emailing h1 {
-    font-size: 1.5rem;
     text-align: center;
+    color: rgb(44, 62, 80);
+    font-size: 1.6rem;
+    font-family: Inter;
+    font-weight: 600;
     margin-bottom: 1rem;
   }
   
@@ -264,24 +268,23 @@ width: 100%
     .fourth-part-about-emailing>* {
         width: 80%;
     }
-
-     .fourth-part-about-emailing form {
+    .fourth-part-about-emailing form {
         flex-direction: column;
         justify-content: center;
         align-items: center;
         text-align: center;
      }
 
-     .fourth-part-about-emailing input {
-        width: 90%;
-     }
-     .fourth-part-about-emailing button {
-        width: 90%;
-     }
+    .fourth-part-about-emailing input {
+      width: 90%;
+    }
+    .fourth-part-about-emailing button {
+      width: 90%;
+    }
 }
 /* Smaller smartphones */
 @media (max-width: 480px) {
-    .first-part-about{
+    .first-part-about{ 
         margin-top: 2.9rem
     }
 

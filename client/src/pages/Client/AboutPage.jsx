@@ -1,7 +1,8 @@
-import React from 'react'
-import portada_gestion from "./images/portada_gestion.jpg"
-import nombrelogo from "./images/nombrelogo-3.png"
+import portada_gestion from "./images/portada_gestion_2.png"
+import nombrelogo from "./images/nombre-logo-4.png"
 import EmailSubscription from "./EmailSubscription"
+import { FaFacebookF, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import Footer from "./Footer.jsx";
 
 export default function AboutPage() {
   return (
@@ -12,8 +13,7 @@ export default function AboutPage() {
         </div>
       <div className="first-part-about">
           <p>       
-            Somos un equipo de profesionales con más de 20 años de trayectoria en empresas en las áreas de Recursos Humanos, liderando, gestionando y acompañando procesos de gestión de las personas y potenciando el capital humano en las organizaciones. Somos especialistas en acompañar a empresas en procesos de reclutamiento y selección de perfiles especialistas, analistas y líderes (Jefes, Gerentes y Directores), perfiles de tecnología, perfiles para posiciones de base, selecciones masivas, evaluaciones psicotécnicas, de perfil y potencial con técnicas como el análisis del Discurso de Eliot Jaques, evaluaciones socio-ambientales y crediticias, 
-            procesos de evaluación para promociones internas, servicios de Outplacement y cambio de cultura organizacional. Intervenimos en las organizaciones brindando soporte y acompañamiento que permitan el crecimiento de las personas y las organizaciones logrando mayor satisfacción y eficiencia
+            Con el objetivo de brindar un servicio de calidad, nos focalizamos en detectar las necesidades de nuestros clientes, su cultura y estilos de trabajo. Para asegurar la calidad del proceso, contamos con una metodología diseñada por etapas bien definidas, la cual garantiza la excelencia y confiabilidad en los resultados.
           </p>
       </div>
      <div className="second-part-about">
@@ -107,17 +107,18 @@ export default function AboutPage() {
 
    
 </div>
-<div className="third-part-about">
-    <h1>NUESTRO SERVICIO DE SELECCIóN</h1>
-    <p>
-      Con el objetivo de brindar un servicio de calidad, nos focalizamos en detectar las necesidades de nuestros clientes, su cultura y estilos de trabajo.
-      Para asegurar la calidad del proceso, contamos con una metodología diseñada por etapas bien definidas, la cual garantiza la excelencia y confiabilidad en los resultados.
-    </p>
-</div>
+  <div className="third-part-about">
+      <h1>NUESTRO SERVICIO DE SELECCIóN</h1>
+      <p>
+        Somos un equipo de profesionales con más de 20 años de trayectoria en empresas en las áreas de Recursos Humanos, liderando, gestionando y acompañando procesos de gestión de las personas y potenciando el capital humano en las organizaciones. Somos especialistas en acompañar a empresas en procesos de reclutamiento y selección de perfiles especialistas, analistas y líderes (Jefes, Gerentes y Directores), perfiles de tecnología, perfiles para posiciones de base, selecciones masivas, evaluaciones psicotécnicas, de perfil y potencial con técnicas como el análisis del Discurso de Eliot Jaques, evaluaciones socio-ambientales y crediticias, procesos de evaluación para promociones internas, servicios de Outplacement y cambio de cultura organizacional. Intervenimos en las organizaciones brindando soporte y acompañamiento que permitan el crecimiento de las personas y las organizaciones logrando mayor satisfacción y eficiencia.
+      </p>
+  </div>
 <EmailSubscription />
-<div className="five-part-about">
-<img className='portada-gestion-about' src={portada_gestion} alt="" />
-</div>
+  <div className="five-part-about">
+    <Footer/>
+  </div>
+
+
 </div>
 
   )
