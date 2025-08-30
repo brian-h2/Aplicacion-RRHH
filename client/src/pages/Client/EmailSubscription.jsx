@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios"; 
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const EmailSubscription = () => {
+   useEffect(() => {
+      AOS.init({duration: 1000})
+    }, [])
+  
   const [email, setEmail] = useState(""); // State to track the email input
   const [successMessage, setSuccessMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -9,6 +16,7 @@ const EmailSubscription = () => {
   const emailService = axios.create({
     baseURL: process.env.REACT_APP_SERVER_URL || "http://localhost:5005/api", // Fallback to localhost
   });
+
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent page refresh
@@ -33,7 +41,7 @@ const EmailSubscription = () => {
   };
 
   return (
-    <div className="fourth-part-about-emailing">
+    <div className="fourth-part-about-emailing" data-aos="fade-up">
       <h1>¿Querés recibir nuestras ofertas de trabajo?</h1>
       <form onSubmit={handleSubmit}>
         <input
