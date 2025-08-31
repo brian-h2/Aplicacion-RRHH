@@ -1,4 +1,9 @@
 /* ABOUT PAGE */
+#ventajas, 
+#servicios {
+  scroll-margin-top: 100px; 
+} /*Per*/
+
 .about-me{
     padding-top: 6rem;
 }
