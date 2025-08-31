@@ -4,28 +4,45 @@ import { useLocation } from "react-router-dom";
 import Footer from "./Footer.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 
 
 export default function AboutPage() {
   const location = useLocation();
 
+  const [activeSection, setActiveSection] = useState(null);
+
   useEffect(() => {
     AOS.init({duration: 1000})
   }, [])
 
+  // Escuchamos cambios en la URL (hash)
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace('#', '');
-      const element = document.getElementById(id);
-      if (element) {
-        // pequeño delay para que la vista ya esté renderizada
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: "smooth" });
-        }, 100);
-      }
+      setActiveSection(id);   // guardamos en estado
+      // limpiamos el hash de la URL
+      window.history.replaceState(null, "", location.pathname);
+    } else {
+      setActiveSection(null); // inicio por defecto
     }
   }, [location]);
+
+  // Cuando cambia activeSection → scroll suave
+  useEffect(() => {
+    if (activeSection) {
+      const element = document.getElementById(activeSection);
+      if (element) {
+        const navbarHeight = 100; // ajusta según el alto de tu navbar
+        const y = element.getBoundingClientRect().top + window.scrollY - navbarHeight;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    } else {
+      // si no hay sección activa, vamos al inicio
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [activeSection]);
+
   return (
   <div>
     <div className="intro" data-aos="fade-down"  id="inicio">

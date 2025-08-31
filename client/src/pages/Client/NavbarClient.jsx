@@ -72,15 +72,6 @@ export default function NavbarClient() {
           >
             Oportunidades de empleo
           </NavLink>
-
-          {/* Si querés un CTA destacado */}
-          {/* <NavLink
-            to="/clientdashboard/contact"
-            className="btn-navbar primary"
-            onClick={closeMenu}
-          >
-            Contacto
-          </NavLink> */}
         </div>
       </div>
     </nav>
