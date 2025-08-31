@@ -3,6 +3,7 @@ import foto1 from "./images/logoCeciliaMenta.png";
 import "./Navbar.css"
 import {NavLink} from "react-router-dom";
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 
 
 export default function NavbarClient() {
@@ -34,20 +35,30 @@ export default function NavbarClient() {
 
         <div id="navmenu" className={`navbar-etiquetas ${open ? 'is-open' : ''}`}>
           <NavLink
-            to="/clientdashboard/about"
+            to="/clientdashboard/about#inicio"
             className="btn-navbar"
             onClick={closeMenu}
           >
             Inicio
           </NavLink>
 
-          <NavLink
-            to="/dashboard/post-job"
+         <Link
+            to="/clientdashboard/about#ventajas"
+            isActive={(_, location) => location.hash === "#ventajas"}
+            className="btn-navbar"
+            onClick={closeMenu}
+          >
+            Ventajas
+          </Link>
+
+          <Link
+            to="/clientdashboard/about#servicios"
+            isActive={(_, location) => location.hash === "#servicios"}
             className="btn-navbar"
             onClick={closeMenu}
           >
             ¿Qué hacemos?
-          </NavLink>
+          </Link>
 
           <NavLink
             to="/clientdashboard/clientjobs"
