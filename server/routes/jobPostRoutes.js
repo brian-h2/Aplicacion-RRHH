@@ -29,13 +29,14 @@ const authMiddleware = async (req, res, next) => {
 };
 
 // Create a new job post (requires authentication)
-router.post("/", authMiddleware, async (req, res) => {
-  try {
-    const jobPost = new JobPost({
-      ...req.body,
-      postedBy: req.userData.userId, // Use the userId from the verified session
-    });
+router.post("/", async (req, res) => {
+  console.log(req)
 
+  const jobPost = new JobPost({
+    ...req.body // Use the userId from the verified session
+  });
+  
+  try {
     const savedJobPost = await jobPost.save();
     res.status(201).json(savedJobPost);
   } catch (error) {
@@ -68,7 +69,7 @@ router.get("/", async (req, res) => {
  }
 
  // Log the constructed filter to verify
- console.log("Filter:", JSON.stringify(filter));
+//  console.log("Filter:", JSON.stringify(filter));
   
   try {
     const jobPosts = await JobPost.find(filter);

@@ -13,6 +13,14 @@
     margin: 2rem auto 4rem;
 }
 
+.searchbar-div-client h2{
+    text-align: center;
+    color: rgb(44, 62, 80);
+    font-size: 2.5rem;
+    font-family: Inter;
+    font-weight: 600;       
+}
+
 .main-container-columns-div {
     height: calc(90vh);
     overflow-y: hidden;

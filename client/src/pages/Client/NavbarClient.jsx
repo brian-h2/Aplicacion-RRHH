@@ -4,6 +4,7 @@ import "./Navbar.css"
 import {NavLink} from "react-router-dom";
 import { useState } from 'react';
 import { Link } from "react-router-dom";
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 
 export default function NavbarClient() {
@@ -71,6 +72,19 @@ export default function NavbarClient() {
             }}
           >
             Oportunidades de empleo
+          </NavLink>
+          <NavLink 
+            to="/login"
+            className="btn-navbar "
+            onClick={closeMenu}
+             style={{
+              display: 'flex',         
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            <AdminPanelSettingsIcon sx={{ color: '#fff', fontSize: 32 }} />
+
           </NavLink>
         </div>
       </div>
