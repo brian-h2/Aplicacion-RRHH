@@ -43,6 +43,7 @@ const JobPostForm = () => {
     try {
       // Use service function to post a new job
       const createdJob = await postJob(jobData);
+      console.log('job creado', createdJob)
       setShowModal(true);
       setModalMessage('Publicado correctamente.');
       setNewJobId(createdJob._id); // Save the ID of the new job

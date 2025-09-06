@@ -57,7 +57,7 @@ export default function App() {
       
     }
  // Log that logout has started
- console.log("Starting logout process...");
+//  console.log("Starting logout process...");
     setIsLoading(true);
  
     logout(accessToken)
@@ -92,6 +92,14 @@ export default function App() {
     <div className="App">
       {/* <Navbar handleLogout={handleLogout} user={user} /> */}
       <Routes>
+
+         <Route path={PATHS.HOMEPAGE} element={<HomePage user={user} authenticate={authenticate} handleLogout={handleLogout} />}>
+          {/* Nested Signup and Login Routes */}
+          <Route index element={<Navigate to={PATHS.CLIENTDASHBOARD} />} /> {/* Redirect root to Login by default */}
+
+          <Route path={PATHS.SIGNUPPAGE} element={<Signup authenticate={authenticate} />} />
+          <Route path={PATHS.LOGINPAGE} element={<Login authenticate={authenticate} />} />
+        </Route>
         
     {/* Dashboard and Nested Routes */}
         <Route path="dashboard/*" element={

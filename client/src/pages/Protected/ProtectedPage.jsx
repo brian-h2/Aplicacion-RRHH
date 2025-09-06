@@ -9,7 +9,7 @@ import * as PATHS from "../../utils/paths";
 const ProtectedPage = ({user, handleLogout}) => {
     const location = useLocation();
 
-    // Redirect to login if user is not authenticated
+    // // Redirect to login if user is not authenticated
     if (!user) {
         return <Navigate to={PATHS.LOGINPAGE} replace/>;
     }

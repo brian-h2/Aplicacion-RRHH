@@ -13,10 +13,13 @@ export const JobProvider = ({ children }) => {
   const [jobPosts, setJobPosts] = useState([]);
   const { searchTerm, locationTerm } = useContext(SearchContext);
 
+  //Hay que evaluar porque sorteddata viene vacio, probablemente porque las tablas estan vacias.
+
   const fetchJobPosts = async () => {
     try {
       const data = await getAllJobPosts(searchTerm, locationTerm);
       const sortedData = data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+      console.log(sortedData)
       setJobPosts(sortedData);
     } catch (error) {
       console.error('Error fetching job posts:', error);
