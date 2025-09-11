@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Outlet } from 'react-router-dom';
 import * as PATHS from '../../utils/paths';
+import AOS from "aos";
+import "aos/dist/aos.css";
 import './Login.css';
 
 const HomePage = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Animations of load
+  useEffect(() => {
+      AOS.init({duration: 1000})
+  }, [])
 
   // Determine the active form based on the current path
   const isSignupPath = location.pathname === PATHS.SIGNUPPAGE;
@@ -30,14 +37,14 @@ const HomePage = () => {
   }
 
   return (
-    <div className="whole-container">
+    <div className="whole-container" data-aos="fade-down">
       <div className={`login-container ${isSignupActive ? 'change' : ''}`}>
         <div className="forms-container">
           {/* Render the nested Signup or Login form here */}
           <Outlet />
         </div>
         <div className="intros-container">
-          <div className="intro-control signin-intro">
+          {/* {<div className="intro-control signin-intro">
             <div className="intro-control__inner">
               <h2>Bienvenido!</h2>
               <p>Todavía no tienes cuenta?</p>
@@ -45,7 +52,7 @@ const HomePage = () => {
                 Registrate
               </button>
             </div>
-          </div>
+          </div>} */}
           <div className="intro-control signup-intro">
             <div className="intro-control__inner">
               <h2>Bienvenido!</h2>
