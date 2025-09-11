@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import "./Signup";
 import "./Login.css"
 import * as USER_HELPERS from "../../utils/userToken";
+import BackHome from "./BackHome";
+import Logo from '../Client/images/nombre-logo-4.png'
 
 export default function LogIn({ authenticate }) {
 
@@ -49,10 +51,10 @@ export default function LogIn({ authenticate }) {
 
   return (
     <div className="form-control signin-form background-login">
+      <img src={Logo} alt="" />
       <form onSubmit={handleFormSubmission} className="signup__form">
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
 
-        <h2 className='h2-form'>Ingresa</h2>
         <input
           id="input-username"
           type="text"
@@ -83,6 +85,9 @@ export default function LogIn({ authenticate }) {
         <button className="signin-btn" type="submit">
           Ingresa
         </button>
+
+        <BackHome/>
+
       </form>
     </div>
   );
