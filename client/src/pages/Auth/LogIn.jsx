@@ -54,7 +54,7 @@ export default function LogIn({ authenticate }) {
       <img src={Logo} alt="" />
       <form onSubmit={handleFormSubmission} className="signup__form">
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-
+    
         <input
           id="input-username"
           type="text"

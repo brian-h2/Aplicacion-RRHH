@@ -30,7 +30,6 @@ const authMiddleware = async (req, res, next) => {
 
 // Create a new job post (requires authentication)
 router.post("/", async (req, res) => {
-  console.log(req)
 
   const jobPost = new JobPost({
     ...req.body // Use the userId from the verified session
