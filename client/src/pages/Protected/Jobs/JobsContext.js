@@ -19,7 +19,6 @@ export const JobProvider = ({ children }) => {
     try {
       const data = await getAllJobPosts(searchTerm, locationTerm);
       const sortedData = data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-      console.log(sortedData)
       setJobPosts(sortedData);
     } catch (error) {
       console.error('Error fetching job posts:', error);
@@ -27,8 +26,6 @@ export const JobProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    console.log("Fetching job posts...");
-
     fetchJobPosts();
   }, [searchTerm, locationTerm]);
 

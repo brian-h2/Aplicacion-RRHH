@@ -81,7 +81,7 @@ export default function App() {
     });
   }
   function authenticate(user) {
-    console.log("Authenticating user: ", user); // Verify if user data is correct
+    // console.log("Authenticating user: ", user); // Verify if user data is correct
     setUser(user);
   }
 

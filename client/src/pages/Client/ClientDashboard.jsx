@@ -18,7 +18,6 @@ const ClientDashboard = () => {
 
       // Fetch the job data based on the URL (if `jobId` is present in the URL)
   useEffect(() => {
-        console.log(id)
         // If there's a jobId in the URL, we need to set the selected job
         if (id) {
             // Check if the job exists in jobPosts
