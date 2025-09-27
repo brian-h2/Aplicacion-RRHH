@@ -1,15 +1,15 @@
-# fly.toml app configuration file generated for aplicacion-rrhh on 2025-09-10T21:22:21Z
+# fly.toml app configuration file generated for aplicacion-rrhh on 2025-09-27T00:55:16Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
 app = 'aplicacion-rrhh'
-primary_region = 'eze'
+primary_region = 'gru'
 
 [build]
 
 [http_service]
-  internal_port = 3000
+  internal_port = 8080
   force_https = true
   auto_stop_machines = 'stop'
   auto_start_machines = true
