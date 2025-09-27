@@ -21,7 +21,6 @@ module.exports = (app) => {
 
   const allowedOrigins = process.env.ALLOWED_ORIGINS.split(",").map(o => o.trim());
 
-  console.log(allowedOrigins)
   // controls a very specific header to pass headers from the frontend
   app.use(
     cors({
