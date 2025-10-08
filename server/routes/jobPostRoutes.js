@@ -1,19 +1,9 @@
 // jobPostRoutes.js
 
-const nodemailer = require("nodemailer");
 const express = require("express");
 const router = express.Router();
 const JobPost = require("../models/jobPost");
 const Session = require("../models/Session.model");
-const Email = require("../models/email");
-
-const transporter = nodemailer.createTransport({
-  service: "Gmail",
-  auth: {
-    user: process.env.EMAIL_USER, 
-    pass: process.env.EMAIL_PASS, 
-  },
-});
 
 // Middleware to verify the session token
 const authMiddleware = async (req, res, next) => {
@@ -46,36 +36,6 @@ router.post("/", async (req, res) => {
   
   try {
     const savedJobPost = await jobPost.save();
-
-    const subscribers = await Email.find({});
-
-    if (subscribers.length > 0) {
-        const subject = "🚀 Nuevo trabajo publicado en nuestra plataforma";
-
-        const htmlContent = `
-          <div style="font-family: Arial, sans-serif; color: #333; padding: 20px;">
-            <h2 style="color: #2c3e50;">¡Tenemos una nueva oportunidad para vos!</h2>
-            <p><b>${savedJobPost.title}</b></p>
-            <p style="color: #555;">
-              ${savedJobPost.description.substring(0, 150)}...
-            </p>
-            <a href="https://web-ceciliamenta-rrhh.vercel.app/clientdashboard/clientjobs"
-              style="display: inline-block; margin-top: 15px; padding: 10px 20px; 
-                      background-color: #3498db; color: #fff; text-decoration: none; 
-                      border-radius: 5px; font-weight: bold;">
-              Ver más detalles
-            </a>
-            <hr style="margin-top: 30px; border: none; border-top: 1px solid #eee;">
-          </div>
-        `;
-      // Mandar un BCC a todos en UN solo envio
-      await transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        bcc: subscribers.map(sub => sub.email), // todos en copia oculta
-        subject,
-        html: htmlContent,
-      });
-    }
 
     res.status(201).json(savedJobPost);
   } catch (error) {
