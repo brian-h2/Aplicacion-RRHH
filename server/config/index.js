@@ -20,7 +20,6 @@ module.exports = (app) => {
   app.set("trust proxy", 1);
 
   const allowedOrigins = process.env.ALLOWED_ORIGINS.split(",").map(o => o.trim());
-
   // controls a very specific header to pass headers from the frontend
   app.use(
     cors({

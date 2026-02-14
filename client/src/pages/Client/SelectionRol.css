@@ -1,0 +1,57 @@
+.rol-container {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.rol-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.rol-text {
+  color: #555;
+  max-width: 400px;
+  margin: 0 auto 25px;
+}
+
+.rol-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.rol-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  color: white;
+  border: none;
+  transition: 0.25s;
+}
+
+.rol-icon {
+  font-size: 20px;
+}
+
+.rol-btn.cliente {
+  background: #16a34a;
+}
+
+.rol-btn.cliente:hover {
+  background: #0f8a3c;
+}
+
+.rol-btn.candidato {
+  background: #2563eb;
+}
+
+.rol-btn.candidato:hover {
+  background: #1e4fc7;
+}

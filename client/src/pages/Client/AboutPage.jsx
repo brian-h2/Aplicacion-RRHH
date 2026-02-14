@@ -73,7 +73,7 @@ export default function AboutPage() {
       <div className="images-ventajas-competitivas">
         <div className="ventajas-competitivas" data-aos="flip-left">
           <img
-            src="https://cdn.abacus.ai/images/81e48232-bf84-4f6e-8c24-201f69476480.png"
+            src="https://dfjx2uxqg3cgi.cloudfront.net/img/photo/215622/215622_00_2x.jpg?20200902023138="
             alt="Atracción y marca empleadora"
             loading="lazy"
           />
@@ -82,7 +82,7 @@ export default function AboutPage() {
 
         <div className="ventajas-competitivas" data-aos="flip-left">
           <img
-            src="https://cdn.abacus.ai/images/59365343-dac2-4420-b293-db77e207b674.png"
+            src="https://pyjamahr.com/wp-content/uploads/2022/01/23.-2nd-image-Under-group-interview.jpg"
             alt="Selección y reclutamiento efectivo"
             loading="lazy"
           />
@@ -91,7 +91,7 @@ export default function AboutPage() {
 
         <div className="ventajas-competitivas" data-aos="flip-left">
           <img
-            src="https://cdn.abacus.ai/images/2b63bd7f-9410-44d3-8d0c-439784338d27.png"
+            src="https://images.openai.com/static-rsc-1/0RU5JVgvGScnJgr3PBGO2ZDRD4o5Lwj5O6FrNL9DU6kjlkGxttuiz-Wu6g5X6qFKBu85CVO4GGhcIdz1XxKBygW8QtQB28JklFoDBzFRBz0mZCgMImq6JKxrjehW0U1c_2ja6y36_U9QxKJNFMjzkg"
             alt="Desarrollo de habilidades y capacitación"
             loading="lazy"
           />
@@ -100,7 +100,7 @@ export default function AboutPage() {
 
         <div className="ventajas-competitivas" data-aos="flip-left">
           <img
-            src="https://cdn.abacus.ai/images/7c732af2-670f-4aa0-994d-2ed07128b1a5.png"
+            src="https://www-assets.perkbox.com/media/6737/i960/c12f34b11c1b0b98a73e.jpg"
             alt="Gestión del desempeño y alto rendimiento"
             loading="lazy"
           />
@@ -109,7 +109,7 @@ export default function AboutPage() {
 
         <div className="ventajas-competitivas" data-aos="flip-left">
           <img
-            src="https://cdn.abacus.ai/images/47d00e17-4004-49b0-9bbc-bdd5a75c00c1.png"
+            src="https://www.jazzhr.com/wp-content/uploads/2020/05/examples-of-workplace-diversity.jpg"
             alt="Diversidad, inclusión e innovación"
             loading="lazy"
           />
@@ -118,7 +118,7 @@ export default function AboutPage() {
 
         <div className="ventajas-competitivas" data-aos="flip-left">
           <img
-            src="https://cdn.abacus.ai/images/291ae7ad-1f38-4a23-97f1-0698571f9107.png"
+            src="https://cdn2.hubspot.net/hubfs/4416146/Employee_Break_Room_Relax_Recharge_Ideas.png"
             alt="Bienestar y compromiso del empleado"
             loading="lazy"
           />
@@ -127,7 +127,7 @@ export default function AboutPage() {
 
         <div className="ventajas-competitivas" data-aos="flip-left">
           <img
-            src="https://cdn.abacus.ai/images/5676db3f-6740-4b43-b12a-e9a79da771c8.png"
+            src="https://ethisphere.com/wp-content/uploads/leader-addressing-team-during-business-meeting-1024x536.jpg"
             alt="Optimización de costos y cumplimiento"
             loading="lazy"
           />
@@ -136,7 +136,7 @@ export default function AboutPage() {
 
         <div className="ventajas-competitivas" data-aos="flip-left">
           <img
-            src="https://cdn.abacus.ai/images/7ba20cd7-13aa-44a6-a794-d2f068a2323c.png"
+            src="https://blog.vikingdirect.ie/wp-content/uploads/2025/01/featured_image-23.png"
             alt="Cultura organizacional y comunicación interna"
             loading="lazy"
           />
