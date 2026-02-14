@@ -31,14 +31,27 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: flex-end;
+  gap: 9rem;
 }
 
-/* Logo */
+
+/* Logo + nombre */
 .navbar .navbar-img {
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* separacion entre foto y texto */
 }
+
+.navbar h2 {
+  margin: 0;
+  font-size: 1.050rem;
+  font-weight: 600;
+  color: var(--nav-text);
+  text-decoration: none;
+}
+
 
 .navbar .navbar-img img {
   height: 68px;
@@ -59,6 +72,7 @@
   margin-left: auto;
 }
 
+
 /* Enlaces base */
 .navbar .navbar-etiquetas .btn-navbar {
   position: relative;
@@ -66,7 +80,7 @@
   color: var(--nav-text);
   font-weight: 600;
   font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  font-size: 1.050rem;
+  font-size: 0.90rem;
   line-height: 1.2;
   padding: 0.75rem 0.5rem;
   border: none;
@@ -74,10 +88,21 @@
   cursor: pointer;
   transition: color 0.2s ease, transform 0.2s ease;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.navbar .navbar-etiquetas .icon-text {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* separa texto de icono */
+  flex-direction: row; /* asegura horizontal */
 }
 
 /* Subrayado animado */
-.navbar .navbar-etiquetas .btn-navbar::after {
+.navbar .container .btn-navbar::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -103,17 +128,17 @@
 }
 
 /* Estado activo de NavLink (React Router) */
-.navbar .navbar-etiquetas .btn-navbar.active {
+.navbar .container.btn-navbar {
   color: var(--nav-text);
 }
 
-.navbar .navbar-etiquetas .btn-navbar.active::after {
+.navbar .btn-navbar::after {
   width: 80%;
   background: var(--nav-accent);
-}
+} 
 
 /* Botón CTA destacado (opcional) */
-.navbar .navbar-etiquetas .btn-navbar.primary {
+.navbar .container .btn-navbar.primary {
   background: rgba(255,255,255,0.15);
   border-radius: 24px;
   padding: 0.75rem 1.25rem;

@@ -21,8 +21,12 @@ import JobPreview from "./pages/Protected/Jobs/JobPreview";
 import { JobProvider } from "./pages/Protected/Jobs/JobsContext";
 import AboutPage from "./pages/Client/AboutPage";
 import MobileClientDashboard from "./pages/Client/MobileClientDashboard";
-
+import ServiceClients from "./pages/Client/ServicesClients";
 import HomeClient from "./pages/Client/HomeClient";
+
+// Layout donde se usa el NavbarClient
+import ClientPublicLayout from "./components/ClientePublicLayout";
+
 
 export default function App() {
   const isMobile = useMediaQuery({ query: "(max-width: 800px)" });
@@ -56,8 +60,6 @@ export default function App() {
     return;
       
     }
- // Log that logout has started
-//  console.log("Starting logout process...");
     setIsLoading(true);
  
     logout(accessToken)
@@ -66,7 +68,6 @@ export default function App() {
         // Handle unsuccessful logout (e.g., server issues)
         console.error("Logout was unsuccessful: ", res);
       } else {
-        console.log("Logout successful.");
         USER_HELPERS.removeUserToken(); // Remove token from local storage
         setUser(null);                  // Set user state to null
         navigate(PATHS.LOGINPAGE);      // Navigate to the login page
@@ -81,7 +82,6 @@ export default function App() {
     });
   }
   function authenticate(user) {
-    console.log("Authenticating user: ", user); // Verify if user data is correct
     setUser(user);
   }
 
@@ -90,57 +90,82 @@ export default function App() {
   }
   return (
     <div className="App">
-      {/* <Navbar handleLogout={handleLogout} user={user} /> */}
       <Routes>
 
-         <Route path={PATHS.HOMEPAGE} element={<HomePage user={user} authenticate={authenticate} handleLogout={handleLogout} />}>
-          {/* Nested Signup and Login Routes */}
-          <Route index element={<Navigate to={PATHS.CLIENTDASHBOARD} />} /> {/* Redirect root to Login by default */}
-
+        {/* AUTH PAGES (Home, Login, Signup) */}
+        <Route
+          path={PATHS.HOMEPAGE}
+          element={
+            <HomePage
+              user={user}
+              authenticate={authenticate}
+              handleLogout={handleLogout}
+            />
+          }
+        >
+          <Route index element={<Navigate to={PATHS.CLIENTDASHBOARD} />} />
           <Route path={PATHS.SIGNUPPAGE} element={<Signup authenticate={authenticate} />} />
           <Route path={PATHS.LOGINPAGE} element={<Login authenticate={authenticate} />} />
         </Route>
-        
-    {/* Dashboard and Nested Routes */}
-        <Route path="dashboard/*" element={
-      <SearchProvider>
-          <JobProvider>
-      <ProtectedPage user={user} handleLogout={handleLogout} />
-            </JobProvider>
+
+        {/* PROTECTED DASHBOARD */}
+        <Route
+          path="dashboard/*"
+          element={
+            <SearchProvider>
+              <JobProvider>
+                <ProtectedPage user={user} handleLogout={handleLogout} />
+              </JobProvider>
             </SearchProvider>
-          }>
-  <Route path= "jobs" element={<JobList />} />
-  <Route path="job/:jobId" element={<JobDetail />} />
-  <Route path="edit-job/:jobId" element={<JobEditForm />} />
+          }
+        >
+          <Route path="jobs" element={<JobList />} />
+          <Route path="job/:jobId" element={<JobDetail />} />
+          <Route path="edit-job/:jobId" element={<JobEditForm />} />
           <Route path="post-job" element={<JobPostForm />} />
           <Route path="job-preview" element={<JobPreview />} />
-          
-    </Route>
+        </Route>
 
+        {/* PUBLIC CLIENT ROUTES (WITH NAVBAR) */}
 
-         {/* unprotected */}
-  
-   <Route path="/clientdashboard/*"
-    element={
-      <SearchProvider><JobProvider>
-      <HomeClient />
-      </JobProvider></SearchProvider>
-      }>
-      <Route index element={<Navigate to="about" />} />
-      
-      <Route path= "clientjobs/:id?" element={ isMobile ? (
-              <MobileClientDashboard />
-            ) : (
-              <ClientDashboard />
-            )}  />
-      <Route path= "about" element={<AboutPage />}/>
-      </Route>  
-        
-        {/* dynamic routing */}
+        <Route element={<ClientPublicLayout />}>
+
+          {/* Servicios a Clientes */}
+          <Route path="/clientservice" element={<ServiceClients />} />
+
+          {/* Client Dashboard Público */}
+          <Route
+            path="/clientdashboard/*"
+            element={
+              <SearchProvider>
+                <JobProvider>
+                  <HomeClient />
+                </JobProvider>
+              </SearchProvider>
+            }
+          >
+            <Route index element={<Navigate to="about" />} />
+
+            <Route
+              path="clientjobs/:id?"
+              element={
+                isMobile ? <MobileClientDashboard /> : <ClientDashboard />
+              }
+            />
+
+            <Route path="about" element={<AboutPage />} />
+          </Route>
+
+        </Route>
+
+        {/* DYNAMIC ROUTES */}
         {routes({ user, authenticate, handleLogout }).map((route) => (
           <Route key={route.path} path={route.path} element={route.element} />
         ))}
+
       </Routes>
     </div>
+
   );
 }
+

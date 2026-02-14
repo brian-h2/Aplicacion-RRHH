@@ -1,28 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react';
 import foto1 from "./images/logoCeciliaMenta.png";
-import "./Navbar.css"
-import {NavLink} from "react-router-dom";
-import { useState } from 'react';
-import { Link } from "react-router-dom";
+import "./Navbar.css";
+import { NavLink, Link } from "react-router-dom";
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-
+import { FaHome, FaStar, FaBriefcase, FaHandsHelping } from "react-icons/fa";
 
 export default function NavbarClient() {
   const [open, setOpen] = useState(false);
 
-  // Cierra el menú al navegar
   const closeMenu = () => setOpen(false);
 
   return (
     <nav className="navbar" role="navigation" aria-label="Principal">
       <div className="container">
+
+        {/* Logo + Nombre */}
         <div className="navbar-img">
-          <NavLink to="/clientdashboard/about" aria-label="Inicio">
-            <img src={foto1} alt="Cecilia Menta" />
+          <NavLink to="/clientdashboard/about#inicio" aria-label="Inicio">
+            <div className="title-photo">
+              <img src={foto1} alt="Cecilia Menta" />
+            </div>
           </NavLink>
+          <h2>Cecilia Menta</h2>
         </div>
 
-        {/* Botón hamburguesa solo visible en mobile (controlado por CSS) */}
+        {/* Botón hamburguesa */}
         <button
           className="menu-toggle"
           aria-expanded={open}
@@ -30,63 +32,83 @@ export default function NavbarClient() {
           aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
           onClick={() => setOpen(o => !o)}
         >
-          {/* Podés reemplazar por un ícono SVG */}
           <span aria-hidden="true">☰</span>
         </button>
 
+        {/* Menú */}
         <div id="navmenu" className={`navbar-etiquetas ${open ? 'is-open' : ''}`}>
+
+          {/* 📌 INICIO */}
           <NavLink
             to="/clientdashboard/about#inicio"
             className="btn-navbar"
             onClick={closeMenu}
           >
-            Inicio
+            <span className="icon-text">
+              <FaHome />
+              Inicio
+            </span>
           </NavLink>
 
-         <Link
+          {/* ⭐ VENTAJAS */}
+          <NavLink
             to="/clientdashboard/about#ventajas"
-            isActive={(_, location) => location.hash === "#ventajas"}
             className="btn-navbar"
             onClick={closeMenu}
           >
-            Ventajas
-          </Link>
+            <span className="icon-text">
+              <FaStar />
+              Ventajas
+            </span>
+          </NavLink>
 
-          <Link
+          {/* 🧰 QUÉ HACEMOS */}
+          <NavLink
             to="/clientdashboard/about#servicios"
-            isActive={(_, location) => location.hash === "#servicios"}
             className="btn-navbar"
             onClick={closeMenu}
           >
-            ¿Qué hacemos?
-          </Link>
+            <span className="icon-text">
+              <FaHandsHelping />
+              ¿Qué hacemos?
+            </span>
+          </NavLink>
 
+           {/* 💼 SERVICIOS A CLIENTES */}
+          <NavLink
+            to="/clientservice"
+            className="btn-navbar"
+            onClick={closeMenu}
+          >
+            <span className="icon-text">
+              <FaBriefcase />
+              Servicio a Clientes
+            </span>
+          </NavLink>
+
+          {/* 💼 OPORTUNIDADES */}
           <NavLink
             to="/clientdashboard/clientjobs"
-            className="btn-navbar "
+            className="btn-navbar btn-jobs"
             onClick={closeMenu}
-             style={{
-              backgroundColor: '#104a61',
-              borderRadius: '30rem',
-              padding: '0.8rem'
-            }}
           >
-            Oportunidades de empleo
+            <span className="icon-text">
+              <FaBriefcase />
+              Oportunidades
+            </span>
           </NavLink>
+
+        </div>
+
+        {/* ⚙ PANEL ADMIN */}
           <NavLink 
             to="/login"
-            className="btn-navbar "
+            className="btn-navbar btn-admin"
             onClick={closeMenu}
-             style={{
-              display: 'flex',         
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}
           >
-            <AdminPanelSettingsIcon sx={{ color: '#fff', fontSize: 32 }} />
-
+            <AdminPanelSettingsIcon className="admin-icon" />
           </NavLink>
-        </div>
+
       </div>
     </nav>
   );
