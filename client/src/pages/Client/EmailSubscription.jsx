@@ -28,7 +28,6 @@ const EmailSubscription = () => {
         },
       });
 
-      console.log("API Response:", response.data);
       setSuccessMessage("¡Gracias por suscribirte!");
       setErrorMessage(""); // Clear error messages
       setEmail(""); // Reset email input
