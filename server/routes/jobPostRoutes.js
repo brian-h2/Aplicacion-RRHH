@@ -5,7 +5,6 @@ const router = express.Router();
 const JobPost = require("../models/jobPost");
 const Session = require("../models/Session.model");
 
-
 // Middleware to verify the session token
 const authMiddleware = async (req, res, next) => {
   try {
@@ -37,6 +36,7 @@ router.post("/", async (req, res) => {
   
   try {
     const savedJobPost = await jobPost.save();
+
     res.status(201).json(savedJobPost);
   } catch (error) {
     console.error("Error creating job post:", error);

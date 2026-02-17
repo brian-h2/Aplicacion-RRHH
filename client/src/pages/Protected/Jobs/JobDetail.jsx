@@ -21,7 +21,6 @@ const JobDetail = () => {
 
     // Fetch job details from the backend
   useEffect(() => {
-    console.log("Job ID fetched:", jobId);
         const fetchJob = async() => {
             try {
                 const data = await getJobPost(jobId);
