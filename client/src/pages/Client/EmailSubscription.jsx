@@ -22,7 +22,7 @@ const EmailSubscription = () => {
     e.preventDefault(); // Prevent page refresh
 
     try {
-      const response = await emailService.post("/emails", { email }, {
+      await emailService.post("/emails", { email }, {
         headers: {
           "Content-Type": "application/json",
         },
@@ -33,7 +33,6 @@ const EmailSubscription = () => {
       setEmail(""); // Reset email input
     } catch (error) {
       console.error("Error al suscribirte:", error);
-
       setSuccessMessage(""); // Clear success messages
       setErrorMessage("Hubo un problema al suscribirte. Inténtalo de nuevo.");
     }
