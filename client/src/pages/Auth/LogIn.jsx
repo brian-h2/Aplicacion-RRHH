@@ -14,10 +14,10 @@ export default function LogIn({ authenticate }) {
     usernameOrEmail: "",
     password: "",
   });
-  const { username, password, email } = form;
+  const { password,  } = form;
   const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState('');
+  const [errorMessage] = useState('');
 
   function handleInputChange(event) {
     const { name, value } = event.target;
