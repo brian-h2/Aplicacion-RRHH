@@ -25,11 +25,6 @@ const HomePage = () => {
     setIsSignupActive(isSignupPath);
   }, [isSignupPath]);
 
-  // Handlers to navigate to signup and login
-  function handleToggleToSignup() {
-    setIsSignupActive(true); // Update the style
-      navigate(PATHS.SIGNUPPAGE); // Update the URL
-  }
 
   function handleToggleToLogin() {
     setIsSignupActive(false); // Update the style

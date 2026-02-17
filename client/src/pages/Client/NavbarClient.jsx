@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import foto1 from "./images/logoCeciliaMenta.png";
 import "./Navbar.css";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { FaHome, FaStar, FaBriefcase, FaHandsHelping } from "react-icons/fa";
 
