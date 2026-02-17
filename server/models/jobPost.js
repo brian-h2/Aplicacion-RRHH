@@ -34,6 +34,6 @@ jobPostSchema.index(
   }
 );
 
-const JobPost = mongoose.model("Job Post", jobPostSchema);
+const JobPost = mongoose.model("JobPost", jobPostSchema, "jobposts");
 
 module.exports = JobPost;
