@@ -30,134 +30,480 @@
     width: 100%;
 }
 
-.first-part-about  {
-    height: 20%;
-    background-color: #006d97;
-    margin: 0;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-        max-width: 105rem;
-    margin: auto;
+.hero-about {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 89vh;
+  padding: 6rem 8rem;
+  background: linear-gradient(135deg, #0f6f8c, #0a5a70);
+  color: white;
+  gap: 4rem;
+  margin-bottom: 4rem;
 }
 
-.first-part-about p{
-    padding: 3rem 8rem;
-    margin: 0;
-    line-height: 2rem;
-    text-align: center;
-    font-size: large;
+.hero-content {
+  flex: 1;
+  max-width: 600px;
 }
 
-/* .second-part-about{
-    height:70%;
-    color: black;
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   margin: 2rem 0 4rem;
-   gap: 1rem;
-   text-align: center;
-} */
-
-.second-part-about h1{
-    font-family: 'Inter';
-    font-weight: 600;
-    text-align: center;
+.hero-about h1 {
+  font-family: 'Inter', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+  text-transform: none;
 }
 
+.highlight {
+  color: #4ea3ff;
+  font-style: italic;
+}
 
-.images-ventajas-competitivas {
-  display: grid;
-  grid-template-columns: 1fr; /* móvil: 1 columna */
-  gap: 1.5rem;
-  padding: 2rem 1rem;
+.hero-about p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  font-weight: 300;
+  opacity: 0.95;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative; 
+}
+
+.experience-card {
+  position: absolute;
+  left: -40px; /* sobresale hacia la izquierda */
+  bottom: -80px;
+  background: #f2f2f2;
+  color: #0b1b2b;
+  padding: 2rem;
+  border-radius: 20px;
+  width: 200px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.experience-card span {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.experience-card h3 {
+  margin-top: 0.8rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.hero-image img {
   width: 100%;
-  box-sizing: border-box;
-  background-color: #f8f8f8;
-  
+  max-width: 62rem;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background-color: #0b1b2b;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 18px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 18px;
+  border: 1.5px solid rgba(255,255,255,0.4);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255,255,255,0.1);
 }
 
 
-.images-ventajas-competitivas .ventajas-competitivas {
+/* SECCIÓN GENERAL */
+
+.second-part-about {
+  padding: 6rem 8rem;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ========================= */
+/* MISIÓN & VISIÓN */
+/* ========================= */
+
+.mv-container {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+
+.mv-card {
+  flex: 1;
+  padding: 3rem;
+  border-radius: 24px;
+  color: white;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+
+.mv-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Fondos */
+
+.mission {
+  background: linear-gradient(135deg, #274690, #1b3a73);
+}
+
+.vision {
+  background: linear-gradient(135deg, #0b1b2b, #081321);
+}
+
+/* Iconos Misión / Visión */
+
+.mv-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.8rem;
+}
+
+.mv-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* Textos */
+
+.mv-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.mv-card p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+/* ========================= */
+/* VALORES */
+/* ========================= */
+
+.values-section {
+  text-align: center;
+}
+
+.values-section h2 {
+  font-size: 1.9rem;
+  margin-bottom: 3.5rem;
+  letter-spacing: 2px;
+  color: #6b7a90;
+  position: relative;
+}
+
+.values-section h2::after {
+  content: "";
+  width: 60px;
+  height: 3px;
+  background: #4ea3ff;
+  display: block;
+  margin: 12px auto 0;
+}
+
+/* GRID */
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+/* CARD DE VALORES */
+
+.value-item {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.05);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 1.25rem;
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  transition: transform .2s ease, box-shadow .2s ease;
-  border: 1px solid #f0f0f0;
-
+  gap: 1.2rem;
+  transition: 0.3s ease;
 }
 
-.images-ventajas-competitivas .ventajas-competitivas:hover {
-  transform: translateY(-6px); /* Un poco más de elevación al pasar el mouse */
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+.value-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.08);
 }
 
-.images-ventajas-competitivas .ventajas-competitivas img {
- width: 100%;
-  height: auto;
-  max-width: none; /* evita limitaciones que reduzcan la tarjeta */
-  border-radius: 8px;
-  margin-bottom: 0.75rem;
+/* Iconos valores */
+
+.value-icon {
+  width: 60px;
+  height: 60px;
+  background: #eef2f7;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.value-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* Texto valores */
+
+.value-item h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.value-item p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #6b7a90;
+}
+
+
+.third-part-about {
+  background: linear-gradient(135deg, #0f6f8c, #0a5a70);
+  color: white;
+  padding: 4rem 8rem;
+  display: flex;
+  justify-content: center;
+}
+
+.third-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1400px;
+  width: 100%;
+}
+
+/* IMAGEN */
+
+.third-image {
+  flex: 1;
+}
+
+.third-image img {
+  width: 80%;
+  border-radius: 20px;
   object-fit: cover;
-  margin-bottom: 1rem;
-  transition: transform 0.3s ease;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
-.ventajas-competitivas:hover img {
-  transform: scale(1.03);
+/* TEXTO */
+
+.third-content {
+  flex: 1;
 }
 
-.images-ventajas-competitivas .ventajas-competitivas p {
+.third-part-about h1 {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-family: 'Inter';
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.third-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.third-part-about p {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  font-weight: 300;
   margin: 0;
-  font-size: 0.98rem;
- color: #444;  
- line-height: 1.4;
-  font-weight: 500;
-
+  text-align: left;
 }
 
-.third-part-about{
-     height: 20%;
-    background-color: #006d97;
-    margin: 0;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    max-width: 105rem;
-    margin: auto;
+.services-detail-section {
+  padding: 3rem 8rem;
+  font-family: 'Inter', sans-serif;
 }
 
-.third-part-about h1{
-    text-transform: uppercase;
-    text-align: center;
+.services-header {
+  max-width: 700px;
+  margin-bottom: 4rem;
 }
 
-.third-part-about p{
-    padding: 3rem 8rem;;
-    margin: 0;
-    line-height: 2rem;
-    text-align: center;
-    font-size: large;
+.services-header h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.services-header h2::after {
+  content: "";
+  width: 60px;
+  height: 3px;
+  background: #4ea3ff;
+  display: block;
+  margin-top: 10px;
+}
+
+.services-header p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* GRID */
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+}
+
+/* CARD */
+
+.service-card {
+  background: linear-gradient(135deg, #0f6f8c, #0a5a70);
+  padding: 1.9rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+  position: relative;
+  transition: 0.3s ease;
+  color: white;
+}
+
+
+.service-card:hover {
+  transform: translateY(-6px);
+}
+
+.service-number {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: rgba(0,0,0,0.06);
+}
+
+.service-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+  color: rgba(255,255,255,0.85);
+}
+
+.service-card ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.service-card li {
+  position: relative;
+  padding-left: 1.4rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.9);
+}
+
+.service-card li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #4ea3ff;
+  font-weight: bold;
+  font-size: 0.85rem;
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.18);
+  border-color: rgba(255,255,255,0.2);
+  cursor: pointer;
+}
+
+.service-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.12);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+}
+
+.service-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+
+
+/* BLOQUE DESTACADO */
+
+.highlight-box {
+  border-left: 4px solid #4ea3ff;
+  padding-left: 1.5rem;
+  font-style: italic;
+  opacity: 0.95;
 }
 
 .fourth-part-about-emailing {
     display: flex;
-    height: 20rem;
+    height: 16rem;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    padding: 3rem 1rem;
+    padding: 0.2rem 1rem;
     background-color: #ffffffd5;
     color: black;
   }
@@ -192,13 +538,13 @@
   .fourth-part-about-emailing button {
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
-    color: rgb(0, 0, 0);
-    background-color: #ccd000;
+    color: white;
+    background-color: #0f6f8c;
     font-weight: 700;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    /* transition: background-color 0.3s ease; */
   }
   
   .fourth-part-about-emailing button:hover {
@@ -233,6 +579,51 @@ width: 100%
 }
 
 @media (max-width: 1024px) {
+
+  .second-part-about {
+    padding: 4rem 2rem;
+  }
+
+  .mv-container {
+    flex-direction: column;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+   .third-part-about {
+    padding: 4rem 2rem;
+  }
+
+  .third-wrapper {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .third-part-about h1 {
+    font-size: 2rem;
+  }
+
+  .third-part-about p {
+    text-align: center;
+  }
+
+  .services-detail-section {
+    padding: 4rem 2rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .highlight-box {
+    border-left: none;
+    border-top: 4px solid #4ea3ff;
+    padding-left: 0;
+    padding-top: 1rem;
+  }
+
   .images-ventajas-competitivas {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -242,6 +633,20 @@ width: 100%
   }
   .ventajas-competitivas img {
     max-width: 240px;
+  }
+
+  .hero-about {
+    flex-direction: column;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-about h1 {
+    font-size: 2.5rem;
   }
 }
 

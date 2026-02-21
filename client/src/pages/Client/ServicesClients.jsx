@@ -28,13 +28,13 @@ export default function ServiceClients() {
     </p>
 
     <ul className="serv-list">
-      <li>Búsqueda y selección profesional</li>
-      <li>Evaluación de competencias y perfiles laborales</li>
-      <li>Consultoría en cultura y clima organizacional</li>
-      <li>Capacitación y desarrollo profesional</li>
+      <li>Servicio de Selección de Personal</li>
+      <li>Evaluación de Perfil y Potencial</li>
+      <li>Procesos de transición laboral acompañados con contención y estrategia.</li>
+      <li>Capacitación y Desarrollo</li>
     </ul>
 
-    <h2 className="serv-subtitle">Solicitar Cotización</h2>
+    <h2 className="serv-subtitle">Solicitar propuesta de servicio</h2>
 
     <p className="serv-text">
       Indícanos tu nombre, teléfono, email y la empresa desde la cual nos contactás.

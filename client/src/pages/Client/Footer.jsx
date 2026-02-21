@@ -16,7 +16,7 @@ const Footer = () => {
             <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/cecilia-menta-429a3818/"><i className="fab fa-linkedin-in"></i></a>
             <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/c.menta/"><i className="fab fa-instagram"></i></a>
         </div>
-        <p className="footer-copy">2025 - Cecilia Menta RRHH</p>
+        <p className="footer-copy">2026 - Cecilia Menta RRHH</p>
       </div>
     </footer>
   );

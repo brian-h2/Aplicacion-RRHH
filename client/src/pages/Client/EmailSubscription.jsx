@@ -40,7 +40,7 @@ const EmailSubscription = () => {
 
   return (
     <div className="fourth-part-about-emailing" data-aos="fade-up">
-      <h1>¿Querés recibir nuestras ofertas de trabajo?</h1>
+      <h1>Me interesa recibir las oportunidades laborales</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
