@@ -1,4 +1,3 @@
-import nombrelogo from "./images/nombre-logo-4.png"
 import EmailSubscription from "./EmailSubscription"
 import ImageGallery from "../../components/ImageGallery.jsx";
 import { useLocation } from "react-router-dom";
@@ -6,7 +5,6 @@ import Footer from "./Footer.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
-import image from "../../sources/2.jpg";
 import imageServicio from "../../sources/5.png";
 import imageHeader from "../../sources/header.jpeg";
 
