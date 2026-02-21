@@ -58,7 +58,7 @@ export default function NavbarClient() {
           >
             <span className="icon-text">
               <FaStar />
-              Ventajas
+              Propósito
             </span>
           </NavLink>
 
@@ -106,7 +106,7 @@ export default function NavbarClient() {
             className="btn-navbar btn-admin"
             onClick={closeMenu}
           >
-            <AdminPanelSettingsIcon className="admin-icon" />
+            <AdminPanelSettingsIcon className="admin-icon" style={{ fontSize: '1.5rem' }} />
           </NavLink>
 
       </div>

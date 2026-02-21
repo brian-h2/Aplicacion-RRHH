@@ -1,10 +1,14 @@
 import nombrelogo from "./images/nombre-logo-4.png"
 import EmailSubscription from "./EmailSubscription"
+import ImageGallery from "../../components/ImageGallery.jsx";
 import { useLocation } from "react-router-dom";
 import Footer from "./Footer.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
+import image from "../../sources/2.jpg";
+import imageServicio from "../../sources/5.png";
+import imageHeader from "../../sources/header.jpeg";
 
 
 export default function AboutPage() {
@@ -13,7 +17,7 @@ export default function AboutPage() {
   const [activeSection, setActiveSection] = useState(null);
 
   useEffect(() => {
-    AOS.init({duration: 1000})
+    AOS.init({ duration: 1000 })
   }, [])
 
   // Escuchamos cambios en la URL (hash)
@@ -44,119 +48,324 @@ export default function AboutPage() {
   }, [activeSection]);
 
   return (
-  <div>
-    <div className="intro" data-aos="fade-down"  id="inicio">
-          <img src={nombrelogo} alt="" /> 
-  
-    </div>
+    <div>
+      <div className="hero-about" data-aos="fade-down" id="inicio">
+        <div className="hero-content">
 
-    <div className="first-part-about" data-aos="fade-up" id="inicio">
-        <p>       
-          Con el objetivo de brindar un servicio de calidad, nos focalizamos en detectar las necesidades de nuestros clientes, su cultura y estilos de trabajo. Para asegurar la calidad del proceso, contamos con una metodología diseñada por etapas bien definidas, la cual garantiza la excelencia y confiabilidad en los resultados.
-        </p>
-    </div>
-    
-    <div className="second-part-about" id="ventajas">
-      <h2 
-      style={{
-        textAlign: 'center',
-        color: '#2c3e50',
-        fontSize: '2.5rem',
-        marginBottom: '3rem',
-        fontFamily: 'Inter',
-        fontWeight: 600
-      }}
-      >
-      NUESTRAS VENTAJAS COMPETITIVAS
-      </h2>
+          <h1>
+            Construimos <br />
+            <span className="highlight">vínculos</span> que <br />
+            transforman
+          </h1>
 
-      <div className="images-ventajas-competitivas">
-        <div className="ventajas-competitivas" data-aos="flip-left">
-          <img
-            src="https://dfjx2uxqg3cgi.cloudfront.net/img/photo/215622/215622_00_2x.jpg?20200902023138="
-            alt="Atracción y marca empleadora"
-            loading="lazy"
-          />
-          <p>Atracción y retención del mejor talento<br />mediante una marca empleadora sólida</p>
+          <p>
+            Acompañamos encuentros genuinos entre personas y organizaciones,
+            donde el trabajo se vive como un espacio de crecimiento, sentido
+            y futuro compartido.
+          </p>
+
+          <div className="hero-buttons">
+            <a href="#servicios" className="btn-primary">
+              Nuestros Servicios ↗
+            </a>
+
+            <a href="/clientservice" className="btn-secondary">
+              Hablemos hoy
+            </a>
+          </div>  
         </div>
 
-        <div className="ventajas-competitivas" data-aos="flip-left">
-          <img
-            src="https://pyjamahr.com/wp-content/uploads/2022/01/23.-2nd-image-Under-group-interview.jpg"
-            alt="Selección y reclutamiento efectivo"
-            loading="lazy"
-          />
-          <p>Procesos de selección eficaces<br />que identifican el talento ideal</p>
-        </div>
+        <div className="hero-image">
+          <img src={imageHeader} alt="Personas colaborando" />
 
-        <div className="ventajas-competitivas" data-aos="flip-left">
-          <img
-            src="https://images.openai.com/static-rsc-1/0RU5JVgvGScnJgr3PBGO2ZDRD4o5Lwj5O6FrNL9DU6kjlkGxttuiz-Wu6g5X6qFKBu85CVO4GGhcIdz1XxKBygW8QtQB28JklFoDBzFRBz0mZCgMImq6JKxrjehW0U1c_2ja6y36_U9QxKJNFMjzkg"
-            alt="Desarrollo de habilidades y capacitación"
-            loading="lazy"
-          />
-          <p>Desarrollo continuo de habilidades<br />y programas de capacitación</p>
-        </div>
-
-        <div className="ventajas-competitivas" data-aos="flip-left">
-          <img
-            src="https://www-assets.perkbox.com/media/6737/i960/c12f34b11c1b0b98a73e.jpg"
-            alt="Gestión del desempeño y alto rendimiento"
-            loading="lazy"
-          />
-          <p>Gestión del desempeño<br />y cultura de alto rendimiento</p>
-        </div>
-
-        <div className="ventajas-competitivas" data-aos="flip-left">
-          <img
-            src="https://www.jazzhr.com/wp-content/uploads/2020/05/examples-of-workplace-diversity.jpg"
-            alt="Diversidad, inclusión e innovación"
-            loading="lazy"
-          />
-          <p>Diversidad e inclusión<br />que fomenta la innovación</p>
-        </div>
-
-        <div className="ventajas-competitivas" data-aos="flip-left">
-          <img
-            src="https://cdn2.hubspot.net/hubfs/4416146/Employee_Break_Room_Relax_Recharge_Ideas.png"
-            alt="Bienestar y compromiso del empleado"
-            loading="lazy"
-          />
-          <p>Bienestar y compromiso del empleado<br />para mayor productividad</p>
-        </div>
-
-        <div className="ventajas-competitivas" data-aos="flip-left">
-          <img
-            src="https://ethisphere.com/wp-content/uploads/leader-addressing-team-during-business-meeting-1024x536.jpg"
-            alt="Optimización de costos y cumplimiento"
-            loading="lazy"
-          />
-          <p>Optimización de costos y cumplimiento<br />reduciendo rotación y riesgos</p>
-        </div>
-
-        <div className="ventajas-competitivas" data-aos="flip-left">
-          <img
-            src="https://blog.vikingdirect.ie/wp-content/uploads/2025/01/featured_image-23.png"
-            alt="Cultura organizacional y comunicación interna"
-            loading="lazy"
-          />
-          <p>Cultura organizacional fuerte<br />y comunicación interna efectiva</p>
+          <div className="experience-card">
+            <span>Experiencia</span>
+            <h3>+20 Años liderando procesos de personas</h3>
+          </div>
         </div>
       </div>
-    </div>
 
-    <div className="third-part-about"  data-aos="fade-down" id="servicios">
-      <h1>NUESTRO SERVICIO DE SELECCIóN</h1>
-      <p>
-        Somos un equipo de profesionales con más de 20 años de trayectoria en empresas en las áreas de Recursos Humanos, liderando, gestionando y acompañando procesos de gestión de las personas y potenciando el capital humano en las organizaciones. Somos especialistas en acompañar a empresas en procesos de reclutamiento y selección de perfiles especialistas, analistas y líderes (Jefes, Gerentes y Directores), perfiles de tecnología, perfiles para posiciones de base, selecciones masivas, evaluaciones psicotécnicas, de perfil y potencial con técnicas como el análisis del Discurso de Eliot Jaques, evaluaciones socio-ambientales y crediticias, procesos de evaluación para promociones internas, servicios de Outplacement y cambio de cultura organizacional. Intervenimos en las organizaciones brindando soporte y acompañamiento que permitan el crecimiento de las personas y las organizaciones logrando mayor satisfacción y eficiencia.
-      </p>
-    </div>
+              <ImageGallery />
 
-    <EmailSubscription />
 
-    <div  className="five-part-about" id="footer"><Footer/>
+      <div className="second-part-about" data-aos="fade-down" id="ventajas">
+
+        <div className="mv-container">
+
+          {/* MISIÓN */}
+          <div className="mv-card mission">
+            <div className="mv-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M12 2l8 8-8 8-8-8 8-8z" />
+              </svg>
+            </div>
+            <h3>Nuestra Misión</h3>
+            <p>
+              Acompañar a personas y organizaciones en procesos de selección y desarrollo,
+              generando encuentros auténticos que potencien crecimiento, productividad
+              y bienestar en relaciones laborales sostenibles.
+            </p>
+          </div>
+
+          {/* VISIÓN */}
+          <div className="mv-card vision">
+            <div className="mv-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <circle cx="12" cy="12" r="9" />
+                <circle cx="12" cy="12" r="4" />
+              </svg>
+            </div>
+            <h3>Nuestra Visión</h3>
+            <p>
+              Ser referentes en selección humana y estratégica, donde cada búsqueda
+              conecte propósito, talento y futuro.
+            </p>
+          </div>
+
+        </div>
+
+        {/* VALORES */}
+
+        <div className="values-section">
+          <h2>NUESTROS VALORES</h2>
+
+          <div className="values-grid">
+
+            {/* 1 */}
+            <div className="value-item">
+              <div className="value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="1.8">
+                  <circle cx="9" cy="8" r="3" />
+                  <circle cx="17" cy="8" r="3" />
+                  <path d="M2 20c2-4 10-4 12 0" />
+                  <path d="M12 20c1-3 7-3 9 0" />
+                </svg>
+              </div>
+              <h4>Personas en el centro</h4>
+              <p>
+                Creemos que el verdadero valor de las organizaciones está en las personas
+                y en los vínculos que construyen.
+              </p>
+            </div>
+
+            {/* 2 */}
+            <div className="value-item">
+              <div className="value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="1.8">
+                  <path d="M4 12l4-4 4 4 4-4 4 4" />
+                  <path d="M8 16l4 4 4-4" />
+                </svg>
+              </div>
+              <h4>Vínculos genuinos</h4>
+              <p>
+                Construimos relaciones basadas en la confianza, el respeto
+                y el crecimiento mutuo.
+              </p>
+            </div>
+
+            {/* 3 */}
+            <div className="value-item">
+              <div className="value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="1.8">
+                  <path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+              </div>
+              <h4>Transparencia</h4>
+              <p>
+                Trabajamos con claridad, honestidad y coherencia
+                en cada proceso y decisión.
+              </p>
+            </div>
+
+            {/* 4 */}
+            <div className="value-item">
+              <div className="value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="1.8">
+                  <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" />
+                </svg>
+              </div>
+              <h4>Escucha activa</h4>
+              <p>
+                Comprendemos en profundidad las necesidades, expectativas
+                y contextos de personas y organizaciones.
+              </p>
+            </div>
+
+            {/* 5 */}
+            <div className="value-item">
+              <div className="value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="1.8">
+                  <rect x="3" y="7" width="18" height="13" rx="2" />
+                  <path d="M8 7V5a4 4 0 0 1 8 0v2" />
+                </svg>
+              </div>
+              <h4>Profesionalismo</h4>
+              <p>
+                Actuamos con experiencia, compromiso y responsabilidad,
+                cuidando la calidad en cada intervención.
+              </p>
+            </div>
+
+            {/* 6 */}
+            <div className="value-item">
+              <div className="value-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="1.8">
+                  <circle cx="12" cy="12" r="9" />
+                  <circle cx="12" cy="12" r="5" />
+                  <circle cx="12" cy="12" r="2" />
+                </svg>
+              </div>
+              <h4>Mirada estratégica</h4>
+              <p>
+                Entendemos el negocio, la cultura y los desafíos organizacionales
+                para generar soluciones alineadas y sostenibles.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <div className="third-part-about" data-aos="fade-down" id="servicios">
+
+        <div className="third-wrapper">
+
+          <div className="third-image">
+            <img src={imageServicio} alt="Proceso de selección de personal" />
+          </div>
+
+          <div className="third-content">
+            <h1>NUESTROS SERVICIOS DE SELECCIÓN</h1>
+
+            <div className="third-text">
+              <p>
+                Somos un equipo de profesionales con más de 20 años de trayectoria en Recursos Humanos, liderando y acompañando procesos de gestión de personas en organizaciones diversas.
+              </p>
+
+              <p>
+                En Cecilia Menta creemos que el trabajo importa: es el espacio donde las personas crecen y las organizaciones se fortalecen.
+              </p>
+
+              <div className="highlight-box">
+                <p>
+                  Actuamos como puente entre personas y organizaciones, priorizando la experiencia del candidato, el ajuste cultural y los objetivos del negocio.
+                </p>
+              </div>
+
+              <p>
+                Brindamos un servicio cercano y profesional, enfocado en generar vínculos laborales sostenibles en el tiempo.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div className="services-detail-section" data-aos="fade-down">
+
+        <div className="services-grid">
+
+
+          {/* 1 */}
+          <div className="service-card">
+            <span className="service-number">01</span>
+            <div className="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M3 7h18M6 7V5a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v2M6 7h12v13H6z" />
+              </svg>
+            </div>
+            <h3>Servicio de Selección de Personal</h3>
+            <p>
+              Procesos estratégicos y humanos para conectar talento y organización,
+              garantizando ajuste cultural y sostenibilidad.
+            </p>
+            <ul>
+              <li>Análisis del puesto y contexto</li>
+              <li>Reclutamiento estratégico multicanal</li>
+              <li>Entrevistas por competencias</li>
+              <li>Evaluación psicotécnica</li>
+              <li>Seguimiento post incorporación</li>
+            </ul>
+          </div>
+
+          {/* 2 */}
+          <div className="service-card">
+            <span className="service-number">02</span>
+            <div className="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M4 19h16M6 17V9M12 17V5M18 17v-7" />
+              </svg>
+            </div>
+            <h3>Evaluación de Perfil y Potencial</h3>
+            <p>
+              Evaluaciones profundas para decisiones estratégicas basadas en
+              información confiable.
+            </p>
+            <ul>
+              <li>Evaluación psicotécnica</li>
+              <li>Análisis de competencias</li>
+              <li>Evaluación de potencial</li>
+              <li>Informe integral con proyección</li>
+            </ul>
+          </div>
+
+          {/* 3 */}
+          <div className="service-card">
+            <span className="service-number">03</span>
+            <div className="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M3 12h18M12 3l9 9-9 9" />
+              </svg>
+            </div>
+
+            <h3>Outplacement</h3>
+            <p>
+              Procesos de transición laboral acompañados con contención y estrategia.
+            </p>
+            <ul>
+              <li>Acompañamiento individual</li>
+              <li>Estrategia de reinserción laboral</li>
+              <li>Optimización de CV</li>
+              <li>Fortalecimiento de marca empleadora</li>
+            </ul>
+          </div>
+
+          {/* 4 */}
+          <div className="service-card">
+            <span className="service-number">04</span>
+            <div className="service-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M12 3l10 6-10 6L2 9l10-6zm0 13v5" />
+              </svg>
+            </div>
+
+            <h3>Capacitación y Desarrollo</h3>
+            <p>
+              Gestión del talento alineada a cultura, desempeño y crecimiento.
+            </p>
+            <ul>
+              <li>Programas de capacitación</li>
+              <li>Gestión del desempeño</li>
+              <li>Planes de carrera</li>
+              <li>Desarrollo de equipos</li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <EmailSubscription />
+
+      <div className="five-part-about" id="footer"><Footer />
+      </div>
     </div>
-</div>
 
   )
 }

@@ -1,8 +1,8 @@
 /* Variables para mantener consistencia */
 :root {
   --nav-h: 6rem;
-  --nav-bg: #006c97fa;
-  --nav-text: #ffffff;
+  --nav-bg: #fff;
+  --nav-text: #006c97fa;
   --nav-text-muted: #EAF6FF;
   --nav-accent: #96C11F;
   --shadow-1: 0 1px 6px rgba(0,0,0,.18);
@@ -46,7 +46,8 @@
 
 .navbar h2 {
   margin: 0;
-  font-size: 1.050rem;
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 1.03rem;
   font-weight: 600;
   color: var(--nav-text);
   text-decoration: none;
@@ -80,7 +81,7 @@
   color: var(--nav-text);
   font-weight: 600;
   font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  font-size: 0.90rem;
+  font-size: 1.03rem;
   line-height: 1.2;
   padding: 0.75rem 0.5rem;
   border: none;
@@ -109,7 +110,7 @@
   bottom: 0;
   height: 2px;
   width: 0;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.9), transparent);
+  background: linear-gradient(90deg, transparent, var(--nav-text), transparent);
   transform: translateX(-50%);
   transition: width 0.25s ease-out;
   border-radius: 2px;

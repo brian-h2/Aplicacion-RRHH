@@ -4,10 +4,10 @@
   font-family: 'Inter', sans-serif;
   text-align: center;
   padding: 2rem 4rem;
-  background-image: url(https://cdn.abacus.ai/images/4480af9d-a8de-4886-ba31-4a2789c7760c.png);
+  background-image: url(https://portal.andina.pe/EDPfotografia3/Thumbnail/2023/08/16/000985849W.webp);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: 120% 10%;
 }
 
 .footer-content {
@@ -33,7 +33,7 @@
 .footer-phrase {
   font-size: 2rem;
   font-weight: 600;
-  color: #023548;
+  color: #ffffff;
   text-decoration: none;
   border-bottom: 2px solid #ffffff;
   padding-bottom: 4px;
@@ -62,7 +62,7 @@
 }
 
 .footer-content .footer-copy {
-  color: #023548;
+  color: #ffffff;
   font-weight: 600;
   font-size: 0.9rem;
   text-align: center;
