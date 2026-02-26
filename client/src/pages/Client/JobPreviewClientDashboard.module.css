@@ -13,6 +13,7 @@
 }
 
 
+
 .jobPostPreview {
     background-color: #ffffff;
     border: none;
@@ -21,10 +22,11 @@
     display: flex;
     flex-direction: column;
     transition: all 0.3s ease-in-out;
-    height: 150px;
+    height: 180px;
     min-width: 38vw;
     overflow: hidden;
 }
+
 .jobLink{
     text-decoration: none;
 }
@@ -53,6 +55,40 @@
     font-weight: 600;
 }
 
+/* New styles for title and status of job post preview */
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.jobTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.statusBadgeActive,
+.statusBadgeClosed {
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.statusBadgeActive {
+  background: #e5f8e8;
+  color: #1b7b32;
+  border: 1px solid #32c252;
+}
+
+.statusBadgeClosed {
+  background: #fdeaea;
+  color: #b32222;
+  border: 1px solid #e05353;
+}
 
 /* MODULAR WHOLE JOBDIV FROM JOBDETAILS - REUSABLEJOBDETAILS - clientdashboard jobreusable */
 .wholeJobDiv{
@@ -62,9 +98,7 @@ height: 87vh;
     margin:  0 auto;
     padding: 0.5rem 2rem;
     overflow-y: scroll;
-
 }
-
 
 /* Tablets and large phones (landscape mode) */
 @media (max-width: 1024px) {

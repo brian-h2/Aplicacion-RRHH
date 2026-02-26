@@ -11,12 +11,12 @@ const JobList = () => {
 return (
     <div className={styles.jobsContainer}>
    {jobPosts.length > 0 ? (
-  jobPosts.map((job) => (
-    <Link
-      to={`/dashboard/job/${job._id}`} 
-      key={job._id}
-      className={styles.jobLink}
-    >
+    jobPosts.map((job) => (
+      <Link
+        to={`/dashboard/job/${job._id}`} 
+        key={job._id}
+        className={styles.jobLink}
+      >
       <JobPreview job={job} styles={styles} />
     </Link>
   ))
