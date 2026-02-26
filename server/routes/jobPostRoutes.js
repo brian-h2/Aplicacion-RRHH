@@ -48,9 +48,8 @@ router.post("/", async (req, res) => {
 router.get("/", async (req, res) => {
   const { searchTerm, locationTerm } = req.query;
 
-  // Initialize filter with non-deleted items
- // Backend filter update logic to ensure the search works as intended
- let filter = { isDeleted: false };
+ // Return all jobs for order 
+ let filter;
 
  if (searchTerm || locationTerm) {
    filter.$or = [];
