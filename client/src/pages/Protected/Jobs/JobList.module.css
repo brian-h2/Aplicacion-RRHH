@@ -54,11 +54,10 @@ box-shadow: 1px 6px 12px rgba(0, 0, 0, 0.237);
 
     margin: 0 auto 2rem;
     padding: 1rem 2rem;
-width: 1100px;
-box-shadow: 1px 6px 12px rgba(0, 0, 0, 0.237);
+    width: 1100px;
+    box-shadow: 1px 6px 12px rgba(0, 0, 0, 0.237);
 
 }
-
 
 /* Tablets and large phones (landscape mode) */
 @media (max-width: 1440px) {
