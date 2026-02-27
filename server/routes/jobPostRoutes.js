@@ -4,6 +4,10 @@ const express = require("express");
 const router = express.Router();
 const JobPost = require("../models/jobPost");
 const Session = require("../models/Session.model");
+const upload = require("../middleware/UploadCloudinary");
+const cloudinary = require("../config/cloudinary");
+const fs = require("fs");
+
 
 // Middleware to verify the session token
 const authMiddleware = async (req, res, next) => {
@@ -28,12 +32,14 @@ const authMiddleware = async (req, res, next) => {
 };
 
 // Create a new job post (requires authentication)
-router.post("/", async (req, res) => {
-
+router.post("/", upload.single("image"), async (req, res) => {
+    
   const jobPost = new JobPost({
-    ...req.body // Use the userId from the verified session
+    ...req.body, // Use the userId from the verified session
+    imageUrl: req.file?.path || null // URL pública de Cloudinary
   });
-  
+
+
   try {
     const savedJobPost = await jobPost.save();
 
@@ -46,29 +52,47 @@ router.post("/", async (req, res) => {
 
 // Get all job posts (public)
 router.get("/", async (req, res) => {
-  const { searchTerm, locationTerm } = req.query;
+  const { searchTerm, locationTerm, statusTerm } = req.query;
 
- // Return all jobs for order 
- let filter;
+  let filter = {};
 
- if (searchTerm || locationTerm) {
-   filter.$or = [];
- 
-   if (searchTerm) {
-     filter.$or.push(
-       { title: { $regex: searchTerm, $options: "i" } },
+  // Creamos un array para $and
+  let andConditions = [];
 
-     );
-   }
- 
-   if (locationTerm) {
-     filter.$or.push({ locationTerm: { $regex: locationTerm, $options: "i" } });
-   }
- }
+  // 🔍 Filtro por búsqueda (title OR location)
+  if (searchTerm) {
+    andConditions.push({
+      $or: [
+        { title: { $regex: searchTerm, $options: "i" } },
+        { company: { $regex: searchTerm, $options: "i" } },
+        { description: { $regex: searchTerm, $options: "i" } }
+      ]
+    });
+  }
 
- // Log the constructed filter to verify
-//  console.log("Filter:", JSON.stringify(filter));
+  // 🔍 Filtro por ubicación
+  if (locationTerm) {
+    andConditions.push({
+      locationTerm: { $regex: locationTerm, $options: "i" }
+    });
+  }
+
+  // 🔥 Filtro por estado (FUNCIONA AHORA)
+  if (statusTerm === "true") {
+    // Activos = isDeleted false
+    andConditions.push({ isDeleted: false });
+  } 
   
+  if (statusTerm === "false") {
+    // Cerrados = isDeleted true
+    andConditions.push({ isDeleted: true });
+  }
+
+  // Si hay condiciones, las aplicamos
+  if (andConditions.length > 0) {
+    filter.$and = andConditions;
+  }
+
   try {
     const jobPosts = await JobPost.find(filter);
     res.status(200).json(jobPosts);
@@ -93,21 +117,38 @@ router.get("/:id", async (req, res) => {
 });
 
 // Update a job post (requires authentication)
-router.put("/:id", authMiddleware, async (req, res) => {
+router.put("/:id", authMiddleware,upload.single("image"), async (req, res) => {
+
   try {
+    const updateData = { ...req.body };
+
+    // 🔴 borrar explícito
+    if (req.body.imageUrl === "") {
+      updateData.imageUrl = "";
+    }
+
+    // 🟢 subir nueva (tiene prioridad)
+    if (req.file) {
+      const result = await cloudinary.uploader.upload(req.file.path);
+      updateData.imageUrl = result.secure_url;
+    }
+
     const updatedJobPost = await JobPost.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      updateData,
       { new: true }
     );
+
     if (!updatedJobPost) {
       return res.status(404).json({ message: "Job Post not found" });
     }
+
     res.status(200).json(updatedJobPost);
   } catch (error) {
     console.error("Error updating job post:", error);
     res.status(400).json({ message: error.message });
   }
+
 });
 
 // Delete a job post (requires authentication)

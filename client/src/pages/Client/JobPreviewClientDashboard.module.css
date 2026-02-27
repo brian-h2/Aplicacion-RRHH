@@ -6,13 +6,10 @@
     flex-direction: column;
     padding: 0 1rem;
     gap: 1rem;
-    width: 39vw;
+    width: 30vw;
     justify-content: center;
-    align-items: center;
-
+    align-items: flex-start;
 }
-
-
 
 .jobPostPreview {
     background-color: #ffffff;
@@ -23,7 +20,7 @@
     flex-direction: column;
     transition: all 0.3s ease-in-out;
     height: 180px;
-    min-width: 38vw;
+    min-width: 28vw;
     overflow: hidden;
 }
 
@@ -60,7 +57,40 @@
 .headerRow {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.headerInfo {
+  flex: 1;
+}
+
+.headerImage img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .headerRow {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .headerImage img {
+    margin-top: 10px;
+  }
+}
+
+.headerRow {
+  display: flex;
   align-items: center;
+  gap: 12px;        /* separa título + badge */
+  margin-bottom: 15px;
 }
 
 .jobTitle {
@@ -93,8 +123,8 @@
 /* MODULAR WHOLE JOBDIV FROM JOBDETAILS - REUSABLEJOBDETAILS - clientdashboard jobreusable */
 .wholeJobDiv{
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-background-color: white;
-height: 87vh;
+    background-color: white;
+    height: 87vh;
     margin:  0 auto;
     padding: 0.5rem 2rem;
     overflow-y: scroll;
@@ -123,14 +153,61 @@ height: 87vh;
     }
 }
 
+.contentWithImage {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; 
+  gap: 30px;
+}
+
+.leftContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.rightImage {
+  overflow: hidden;           /* evita que la imagen se salga */
+  border-radius: 12px;
+  transition: transform 0.3s ease;
+}
+
+.rightImage img {
+  max-width: 450px;
+  border-radius: 12px;
+  object-fit: cover;
+  transition: transform 0.3s ease; /* transición suave */
+  cursor: zoom-in;                /* feedback visual */
+}
+
+.rightImage:hover img {
+  transform: scale(1.15);        /* la magia: agranda la imagen */
+}
+
 /* Small tablets and large smartphones */
 @media (max-width: 768px) {
     /* CSS */
 }
 
-/* Smaller smartphones */
-@media (max-width: 480px) {
+@media (max-width: 900px) {
+  .contentWithImage {
+    flex-direction: column;           /* Apila */
+    align-items: center;              /* Centra */
+    text-align: center;               /* Opcional */
+  }
 
+  .rightImage img {
+    max-width: 80%;                  /* Imagen grande pero controlada */
+    width: 100%;
+    margin-top: 20px;
+  }
 
-   
+  .leftContent {
+    width: 100%;                     /* Ocupa todo el ancho */
+  }
+
+  .apply-links {
+    justify-content: center;         /* Botones centrados */
+  }
 }

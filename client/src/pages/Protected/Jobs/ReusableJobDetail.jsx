@@ -33,92 +33,87 @@ export default function ReusableJobDetail({ job, styles }) {
 
     return (
         <div className={styles.wholeJobDiv}>
+
+            {/* HEADER */}
             <div className={styles.headerRow}>
                 <h3 className={styles.jobTitle}>{jobData.title}</h3>
-
                 <span
-                className={
-                    jobData.isDeleted
-                    ? styles.statusBadgeClosed
-                    : styles.statusBadgeActive
-                }
+                    className={
+                        jobData.isDeleted
+                            ? styles.statusBadgeClosed
+                            : styles.statusBadgeActive
+                    }
                 >
-                {jobData.isDeleted ? "Cerrada" : "Activa"}
+                    {jobData.isDeleted ? "Cerrada" : "Activa"}
+                    
                 </span>
             </div>
-            <p className="job-detail-row">
-                <strong>Empresa: </strong>
-                {jobData.company}
-            </p>
-            <p className="job-detail-row">
-                <strong>Ubicación:</strong>
-                {jobData.locationTerm}
-            </p>
 
-            <p className="job-detail-row">
-            <strong>Disponibilidad:</strong>
-            {jobData.employmentType}
-            </p>
+            {/* CONTENEDOR PRINCIPAL: IZQUIERDA + IMAGEN */}
+            <div className={styles.contentWithImage}>
 
-            <p className="job-detail-row">
-            <strong>Modalidad:</strong>
-            {jobData.employmentStyle}
-            </p>
+                {/* IZQUIERDA: TODA LA INFO + BOTONES */}
+                <div className={styles.leftContent}>
+                    <p className="job-detail-row"><strong>Empresa:</strong> {jobData.company}</p>
+                    <p className="job-detail-row"><strong>Ubicación:</strong> {jobData.locationTerm}</p>
+                    <p className="job-detail-row"><strong>Disponibilidad:</strong> {jobData.employmentType}</p>
+                    <p className="job-detail-row"><strong>Modalidad:</strong> {jobData.employmentStyle}</p>
 
-            <p className="job-detail-row">
-                <strong>Descripción:</strong>
-                <JobDescription description={jobData.description} />
-            </p>
-            {jobData.salaryRange && (
-                <p className="job-detail-row">                    
-                    <strong>Salario: </strong>
-                    {jobData.salaryRange}
-                </p>
-            )}
-            {jobData.contactEmail && (
-                <p className="job-detail-row">
-                    <strong>Email de contacto: </strong>
-                    {jobData.contactEmail}
-                </p>
-               
-            )}
-            {/* {jobData.applicationCode && (
-                  <p>
-                  <strong>Codigo Ref. Email: </strong>
-              {jobData.applicationCode}
-          </p>
-
-            )} */}
-            <div className="apply-links">    
-                {jobData.linkedinLink && !jobData.isDeleted && (
-                    <p>
-                        <a
-                            href={jobData.linkedinLink}
-                            className="linkedin-link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <strong>LinkedIn</strong>
-                        </a>
+                    <p className="job-detail-row">
+                        <strong>Descripción:</strong>
+                        <JobDescription description={jobData.description} />
                     </p>
+
+                    {jobData.salaryRange && (
+                        <p className="job-detail-row"><strong>Salario:</strong> {jobData.salaryRange}</p>
+                    )}
+
+                    {jobData.contactEmail && (
+                        <p className="job-detail-row"><strong>Email de contacto:</strong> {jobData.contactEmail}</p>
+                    )}
+
+                    
+                    {/* PUBLICADO */}
+                    <p className="job-detail-row">
+                        <strong>Publicado:</strong> {formatDate(job.createdAt)}
+                    </p>
+
+                    {/* BOTONES ADENTRO DEL LEFT CONTENT */}
+                    <div className="apply-links">
+                        {jobData.linkedinLink && !jobData.isDeleted && (
+                            <p>
+                                <a
+                                    href={jobData.linkedinLink}
+                                    target="_blank"
+                                    className="linkedin-link"
+                                    rel="noopener noreferrer"
+                                >
+                                    <strong>LinkedIn</strong>
+                                </a>
+                            </p>
+                        )}
+
+                        <p className="Mail-link-div">
+                            <button
+                                disabled={jobData.isDeleted}
+                                className={`apply-btn ${jobData.isDeleted ? "disabled" : ""}`}
+                                onClick={() => !jobData.isDeleted && window.open(mailToLink, "_blank")}
+                            >
+                                Aplicar 
+                                <span className="material-symbols-outlined">mail</span>
+                            </button>
+                        </p>
+                    </div>
+                </div>
+
+                {/* DERECHA: IMAGEN */}
+                {jobData.imageUrl && (
+                    <div className={styles.rightImage}>
+                        <img src={jobData.imageUrl} alt="Imagen del trabajo" />
+                    </div>
                 )}
-                <p className="Mail-link-div">
-                    <button
-                        disabled={jobData.isDeleted}
-                        className={`apply-btn ${jobData.isDeleted ? "disabled" : ""}`}
-                        onClick={() => {
-                            if (!jobData.isDeleted) window.open(mailToLink, "_blank");
-                        }}
-                    >
-                        Aplicar 
-                        <span className="material-symbols-outlined">mail</span>
-                    </button>
-                </p>        
-           </div>
-           <p className="job-detail-row">
-                <strong>Publicado: </strong>
-                {formatDate(job.createdAt)}
-            </p>
+
+            </div>
         </div>
     );
 }

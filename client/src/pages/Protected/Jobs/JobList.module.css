@@ -59,6 +59,12 @@ box-shadow: 1px 6px 12px rgba(0, 0, 0, 0.237);
 
 }
 
+.wholeJobDiv img{
+    margin-top: 1rem;
+    max-width: 60vh;
+    height: auto;
+    margin-bottom: 1rem;
+}
 /* Tablets and large phones (landscape mode) */
 @media (max-width: 1440px) {
     .jobsContainer {

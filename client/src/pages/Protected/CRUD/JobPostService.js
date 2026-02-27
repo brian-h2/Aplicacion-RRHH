@@ -12,11 +12,20 @@ const getAuthHeader = () => {
 };
 
 // Function to create a new job post
-export const postJob = (jobData) => {
+export const postJob = (jobData, imageFile) => {
+
+  const formData = new FormData();
+  Object.keys(jobData).forEach(key => {
+    formData.append(key, jobData[key]);
+  });
+  if (imageFile) {
+    formData.append('image', imageFile);
+  }
+
   return jobService
-    .post('/', jobData, {
+    .post('/', formData, {
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
         ...getAuthHeader(),
       },
     })
@@ -45,10 +54,11 @@ export const getJobPost = (jobId) => {
 
 // Function to update an existing job post
 export const updateJobPost = (jobId, updatedJobData) => {
+  console.log('Updating job post with ID:', jobId, 'and data:', updatedJobData);
   return jobService
     .put(`/${jobId}`, updatedJobData, {
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
         ...getAuthHeader(),
       },
     })
@@ -92,10 +102,10 @@ export const restoreJobPost = (jobId) => {
 };
 
 // Function to fetch all job posts
-export const getAllJobPosts = (searchTerm = '', locationTerm = '') => {
+export const getAllJobPosts = (searchTerm = '', locationTerm = '', statusTerm = '') => {
   return jobService
     .get('/', {
-      params: { searchTerm, locationTerm }, // Use query params for filtering
+      params: { searchTerm, locationTerm, statusTerm }, // Use query params for filtering
       headers: {
         'Content-Type': 'application/json',
         ...getAuthHeader(),
