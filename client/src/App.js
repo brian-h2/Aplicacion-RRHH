@@ -55,7 +55,6 @@ export default function App() {
        // If there is no token, update user state and navigate to login
     setUser(null);
     setIsLoading(false);
-    console.log("No access token found, logging out immediately.");
     navigate(PATHS.LOGINPAGE);
     return;
       

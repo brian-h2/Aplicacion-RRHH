@@ -45,7 +45,6 @@ const JobPostForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log('Submitting job data:', jobData, imageFile);
     try {
       // Use service function to post a new job
       const createdJob = await postJob(jobData, imageFile);
