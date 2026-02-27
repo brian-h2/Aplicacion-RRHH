@@ -13,22 +13,22 @@ const JobDetail = () => {
 
     //to display Modals of messages whenever actions get done
     const [showModal, setShowModal] = useState(false);
-  const [modalMessage, setModalMessage] = useState('');
-  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
-  const {  styles, fetchJobPosts } = useContext(JobContext);
+    const [modalMessage, setModalMessage] = useState('');
+    const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+    const {  styles, fetchJobPosts } = useContext(JobContext);
 
     const navigate = useNavigate();
 
     // Fetch job details from the backend
-  useEffect(() => {
-        const fetchJob = async() => {
-            try {
-                const data = await getJobPost(jobId);
-                setJob(data);
-            } catch (error) {
-                console.error("Failed to fetch job details", error);
-            }
-        };
+    useEffect(() => {
+          const fetchJob = async() => {
+              try {
+                  const data = await getJobPost(jobId);
+                  setJob(data);
+              } catch (error) {
+                  console.error("Failed to fetch job details", error);
+              }
+          };
         fetchJob();
     }, [jobId]);
 
@@ -52,7 +52,7 @@ const JobDetail = () => {
     } catch (error) {
       console.error("Failed to delete job post", error);
     }
-    };
+  };
 
 
     // closes Modal after deleting

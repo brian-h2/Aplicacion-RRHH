@@ -50,4 +50,71 @@ code {
   background: transparent; /* Allows the background to show through */
 }
 
+/* Style general for the componente ReusableJoDetail */
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.jobTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.statusBadgeActive,
+.statusBadgeClosed {
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  border-radius: 6px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.statusBadgeActive {
+  background: #e5f8e8;
+  color: #1b7b32;
+  border: 1px solid #32c252;
+}
+
+.statusBadgeClosed {
+  background: #fdeaea;
+  color: #b32222;
+  border: 1px solid #e05353;
+}
+
+.job-detail-row {
+  display: grid;
+  grid-template-columns: 150px 1fr; /* Ajustá el 150px a tu gusto */
+  margin-bottom: 8px;
+  align-items: start;
+}
+.job-detail-row strong {
+  font-weight: 600;
+}
+
+.apply-btn.disabled {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  border: 1px solid #999;
+  opacity: 0.7;
+  margin-left: 0px;
+}
+
+.apply-btn {
+  padding: 12px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #006d97;
+  color: white;
+  margin-left: 10px;
+}
+
+
 

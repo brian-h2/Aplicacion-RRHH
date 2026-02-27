@@ -39,10 +39,12 @@ box-shadow: 0 5px 12px rgb(0, 0, 0);
 .linkedin-link:visited {
     background-color: #006d97;
     color: white;
-    padding: 14px;
+    padding: 12px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    border-radius: 10px;
+    font-weight: 200;
 }
 
 .linkedin-link:hover,
@@ -52,17 +54,17 @@ box-shadow: 0 5px 12px rgb(0, 0, 0);
 .mailTo-link:link, .mailTo-link:visited{
     background-color: #006d97;
     text-decoration: none;
-    padding: 11.9px;
+    padding: 12px;
     text-align: center;
     margin-left: 10px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 10px;
 }
 
 .mailTo-link button {
-    border: none;
     font-size: 1rem;
     cursor: pointer;
 
@@ -70,6 +72,7 @@ box-shadow: 0 5px 12px rgb(0, 0, 0);
 color: white;
 padding: 0;
     text-decoration: none;
+
 }
 
 .material-symbols-outlined {

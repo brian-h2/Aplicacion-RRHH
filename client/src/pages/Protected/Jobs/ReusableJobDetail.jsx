@@ -28,41 +28,57 @@ export default function ReusableJobDetail({ job, styles }) {
     if (!jobData) {
         return null; // Return null or a loading state if job is not available
     }
- // Constructing the Gmail link
- const mailToLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${jobData.contactEmail}&su=${jobData.applicationCode}&body=Estimada Cecilia Menta,%0D%0A%0D%0A Estoy interesado/a en aplicar al trabajo de ${jobData.title}.%0D%0A%0D%0A Adjunto CV y carta de presentación.%0D%0A%0D%0A Saludos Cordiales, %0D%0A[Tu nombre]`;
-
-    
+    // Constructing the Gmail link
+    const mailToLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${jobData.contactEmail}&su=${jobData.applicationCode}&body=Estimada Cecilia Menta,%0D%0A%0D%0A Estoy interesado/a en aplicar al trabajo de ${jobData.title}.%0D%0A%0D%0A Adjunto CV y carta de presentación.%0D%0A%0D%0A Saludos Cordiales, %0D%0A[Tu nombre]`;
 
     return (
         <div className={styles.wholeJobDiv}>
-            <h2>{jobData.title}</h2>
-            <p>{jobData.company}</p>
-            <p>
-                <strong>Ubicación: </strong>
+            <div className={styles.headerRow}>
+                <h3 className={styles.jobTitle}>{jobData.title}</h3>
+
+                <span
+                className={
+                    jobData.isDeleted
+                    ? styles.statusBadgeClosed
+                    : styles.statusBadgeActive
+                }
+                >
+                {jobData.isDeleted ? "Cerrada" : "Activa"}
+                </span>
+            </div>
+            <p className="job-detail-row">
+                <strong>Empresa: </strong>
+                {jobData.company}
+            </p>
+            <p className="job-detail-row">
+                <strong>Ubicación:</strong>
                 {jobData.locationTerm}
             </p>
-            <p>
-                <strong>Disponibilidad: </strong>
-                {jobData.employmentType}
+
+            <p className="job-detail-row">
+            <strong>Disponibilidad:</strong>
+            {jobData.employmentType}
             </p>
-            <p>
-                <strong>Modalidad: </strong>
-                {jobData.employmentStyle}
+
+            <p className="job-detail-row">
+            <strong>Modalidad:</strong>
+            {jobData.employmentStyle}
             </p>
-            <p>
-                <strong>Descripción: </strong>
-                <JobDescription description={job.description} />
+
+            <p className="job-detail-row">
+                <strong>Descripción:</strong>
+                <JobDescription description={jobData.description} />
             </p>
             {jobData.salaryRange && (
-                <p>
+                <p className="job-detail-row">                    
                     <strong>Salario: </strong>
-                    {job.salaryRange}
+                    {jobData.salaryRange}
                 </p>
             )}
             {jobData.contactEmail && (
-                <p>
+                <p className="job-detail-row">
                     <strong>Email de contacto: </strong>
-                    {job.contactEmail}
+                    {jobData.contactEmail}
                 </p>
                
             )}
@@ -73,47 +89,38 @@ export default function ReusableJobDetail({ job, styles }) {
           </p>
 
             )} */}
-            <div className="apply-links">
-                
-            {jobData.linkedinLink && (
-                <p>
-                    <a
-                        href={job.linkedinLink}
-                        className="linkedin-link"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        <strong>LinkedIn</strong>
-                    </a>
-                </p>
-                )}
-                    <p className="Mail-link-div">
+            <div className="apply-links">    
+                {jobData.linkedinLink && !jobData.isDeleted && (
+                    <p>
                         <a
-                            href={mailToLink}
-                        target="_blank"
-                        className="mailTo-link"
+                            href={jobData.linkedinLink}
+                            className="linkedin-link"
+                            target="_blank"
                             rel="noopener noreferrer"
-                            >
-                        <button >
-                           
-
-                                Aplicar 
-                           
-                                                   
-                        </button>
-                        <span class="material-symbols-outlined">
-mail
-</span>
-                    </a>
-                
+                        >
+                            <strong>LinkedIn</strong>
+                        </a>
                     </p>
+                )}
+                <p className="Mail-link-div">
+                    <button
+                        disabled={jobData.isDeleted}
+                        className={`apply-btn ${jobData.isDeleted ? "disabled" : ""}`}
+                        onClick={() => {
+                            if (!jobData.isDeleted) window.open(mailToLink, "_blank");
+                        }}
+                    >
+                        Aplicar 
+                        <span className="material-symbols-outlined">mail</span>
+                    </button>
+                </p>        
            </div>
            <div className="image">
             {jobData.imageUrl && (
                 <img src={jobData.imageUrl} alt={`${jobData.company} logo`} />
             )}
            </div>
-            <p>
+           <p className="job-detail-row">
                 <strong>Publicado: </strong>
                 {formatDate(job.createdAt)}
             </p>
