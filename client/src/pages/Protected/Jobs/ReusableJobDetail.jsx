@@ -45,6 +45,7 @@ export default function ReusableJobDetail({ job, styles }) {
                     }
                 >
                     {jobData.isDeleted ? "Cerrada" : "Activa"}
+                    
                 </span>
             </div>
 

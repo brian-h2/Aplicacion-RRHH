@@ -31,17 +31,56 @@ const JobEditForm = () => {
     }
   }, [jobId]);
 
+  const handleRemoveImage = () => {
+    setJobData(prev => ({
+      ...prev,
+      imageUrl: "",
+      imageFile: null
+    }));
+  };
+
+  const handleChangeFile = (e) => {
+  setJobData(prev => ({
+    ...prev,
+      imageFile: e.target.files[0]
+    }));
+  };
+
+
   // Handle form submission for updating a job post
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    console.log("Submitting job update with data:", jobData);
+
+    const formData = new FormData();
+
+    Object.entries(jobData).forEach(([key, value]) => {
+      if (
+        value !== null &&
+        value !== undefined &&
+        value !== "" &&
+        key !== "imageFile"
+      ) {
+        formData.append(key, value);
+      }
+    });
+
+    if (jobData.imageFile) {
+      formData.append("image", jobData.imageFile);
+    }
+
+    if (jobData.imageUrl === "") {
+      formData.append("imageUrl", "");
+    }
+
     try {
-      await updateJobPost(jobId, jobData); // Update the job post using the service
+      await updateJobPost(jobId, formData);
+      setModalMessage("Actualizado correctamente.");
       setShowModal(true);
-      setModalMessage('Actualizado correctamente.');
     } catch (error) {
+      setModalMessage("No fue posible actualizar, intente nuevamente.");
       setShowModal(true);
-      setModalMessage('No fue posible actualizar, intente nuevamente.');
     }
   };
 
@@ -75,6 +114,8 @@ const JobEditForm = () => {
         jobData={jobData}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
+        handleChangeFile={handleChangeFile}
+        handleRemoveImage={handleRemoveImage}
         buttonLabel="Actualizar"
       />
       {showModal && <Modal message={modalMessage} onClose={closeModal} />}

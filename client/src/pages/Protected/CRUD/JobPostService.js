@@ -54,10 +54,11 @@ export const getJobPost = (jobId) => {
 
 // Function to update an existing job post
 export const updateJobPost = (jobId, updatedJobData) => {
+  console.log('Updating job post with ID:', jobId, 'and data:', updatedJobData);
   return jobService
     .put(`/${jobId}`, updatedJobData, {
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
         ...getAuthHeader(),
       },
     })
