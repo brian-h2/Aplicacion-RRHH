@@ -7,18 +7,20 @@ export default function SearchBar() {
 
     const [form, setForm] = useState({
         searchTerm: '',
-        locationTerm: ''
+        locationTerm: '',
+        statusTerm: ''
     });
 
-    const { setSearchTerm, setLocationTerm } = useContext(SearchContext);
+    const { setSearchTerm, setLocationTerm, setStatusTerm } = useContext(SearchContext);
 
     // ✅ useMemo en vez de useCallback
     const debouncedSearch = useMemo(() => {
-        return debounce((searchTerm, locationTerm) => {
+        return debounce((searchTerm, locationTerm, statusTerm) => {
             setSearchTerm(searchTerm);
             setLocationTerm(locationTerm);
+            setStatusTerm(statusTerm);
         }, 200);
-    }, [setSearchTerm, setLocationTerm]);
+    }, [setSearchTerm, setLocationTerm, setStatusTerm]);
 
     // ✅ Limpieza para evitar memory leaks
     useEffect(() => {
@@ -32,7 +34,7 @@ export default function SearchBar() {
 
         setForm((prev) => {
             const updatedForm = { ...prev, [name]: value };
-            debouncedSearch(updatedForm.searchTerm, updatedForm.locationTerm);
+            debouncedSearch(updatedForm.searchTerm, updatedForm.locationTerm, updatedForm.statusTerm);
             return updatedForm;
         });
     };
@@ -40,6 +42,7 @@ export default function SearchBar() {
     const handleSearch = () => {
         setSearchTerm(form.searchTerm);
         setLocationTerm(form.locationTerm);
+        setStatusTerm(form.statusTerm);
     };
 
     return (
@@ -64,6 +67,17 @@ export default function SearchBar() {
                         value={form.locationTerm}
                         onChange={handleChange}
                     />
+
+                    <select
+                        name="statusTerm"
+                        className="status-filter"
+                        value={form.statusTerm}
+                        onChange={handleChange}
+                    >
+                        <option value="">Estado del trabajo</option>
+                        <option value="true">Activo</option>
+                        <option value="false">Cerrado</option>
+                    </select>
 
                     <button className="search-btn" onClick={handleSearch}>
                         Buscar

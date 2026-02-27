@@ -101,10 +101,10 @@ export const restoreJobPost = (jobId) => {
 };
 
 // Function to fetch all job posts
-export const getAllJobPosts = (searchTerm = '', locationTerm = '') => {
+export const getAllJobPosts = (searchTerm = '', locationTerm = '', statusTerm = '') => {
   return jobService
     .get('/', {
-      params: { searchTerm, locationTerm }, // Use query params for filtering
+      params: { searchTerm, locationTerm, statusTerm }, // Use query params for filtering
       headers: {
         'Content-Type': 'application/json',
         ...getAuthHeader(),

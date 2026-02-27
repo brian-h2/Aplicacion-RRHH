@@ -11,13 +11,14 @@ export const JobContext = createContext();
 
 export const JobProvider = ({ children }) => {
   const [jobPosts, setJobPosts] = useState([]);
-  const { searchTerm, locationTerm } = useContext(SearchContext);
+  const { searchTerm, locationTerm, statusTerm } = useContext(SearchContext);
 
   //Hay que evaluar porque sorteddata viene vacio, probablemente porque las tablas estan vacias.
 
     const fetchJobPosts = useCallback(async () => {
-      try {
-        const data = await getAllJobPosts(searchTerm, locationTerm);
+      console.log('Fetching job posts with:', { searchTerm, locationTerm, statusTerm });
+        try {
+        const data = await getAllJobPosts(searchTerm, locationTerm, statusTerm);
         const sortedData = data.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
@@ -25,7 +26,7 @@ export const JobProvider = ({ children }) => {
       } catch (error) {
         console.error('Error fetching job posts:', error);
       }
-    }, [searchTerm, locationTerm]);
+    }, [searchTerm, locationTerm, statusTerm]);
 
 
   useEffect(() => {

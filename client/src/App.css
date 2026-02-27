@@ -20,6 +20,38 @@ body {
   cursor: pointer;
 }
 
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.headerInfo {
+  flex: 1;
+}
+
+.headerImage img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .headerRow {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .headerImage img {
+    margin-top: 10px;
+  }
+}
+
 .btn2{
   width: 4rem;
   height: 2rem;
