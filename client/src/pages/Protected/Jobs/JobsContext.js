@@ -16,7 +16,6 @@ export const JobProvider = ({ children }) => {
   //Hay que evaluar porque sorteddata viene vacio, probablemente porque las tablas estan vacias.
 
     const fetchJobPosts = useCallback(async () => {
-      console.log('Fetching job posts with:', { searchTerm, locationTerm, statusTerm });
         try {
         const data = await getAllJobPosts(searchTerm, locationTerm, statusTerm);
         const sortedData = data.sort(
