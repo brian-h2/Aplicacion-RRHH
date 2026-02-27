@@ -12,11 +12,20 @@ const getAuthHeader = () => {
 };
 
 // Function to create a new job post
-export const postJob = (jobData) => {
+export const postJob = (jobData, imageFile) => {
+
+  const formData = new FormData();
+  Object.keys(jobData).forEach(key => {
+    formData.append(key, jobData[key]);
+  });
+  if (imageFile) {
+    formData.append('image', imageFile);
+  }
+
   return jobService
-    .post('/', jobData, {
+    .post('/', formData, {
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
         ...getAuthHeader(),
       },
     })

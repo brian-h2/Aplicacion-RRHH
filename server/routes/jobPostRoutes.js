@@ -4,6 +4,8 @@ const express = require("express");
 const router = express.Router();
 const JobPost = require("../models/jobPost");
 const Session = require("../models/Session.model");
+const upload = require("../middleware/UploadCloudinary");
+
 
 // Middleware to verify the session token
 const authMiddleware = async (req, res, next) => {
@@ -28,11 +30,16 @@ const authMiddleware = async (req, res, next) => {
 };
 
 // Create a new job post (requires authentication)
-router.post("/", async (req, res) => {
-
+router.post("/", upload.single("image"), async (req, res) => {
+    console.log("Received request to create job post with data:", req.body);
+    
   const jobPost = new JobPost({
-    ...req.body // Use the userId from the verified session
+    ...req.body, // Use the userId from the verified session
+    imageUrl: req.file?.path || null // URL pública de Cloudinary
   });
+
+  console.log("Received job post data:", req.body);
+  console.log("Received file data:", req.file);
   
   try {
     const savedJobPost = await jobPost.save();

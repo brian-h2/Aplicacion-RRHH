@@ -108,6 +108,11 @@ mail
                 
                     </p>
            </div>
+           <div className="image">
+            {jobData.imageUrl && (
+                <img src={jobData.imageUrl} alt={`${jobData.company} logo`} />
+            )}
+           </div>
             <p>
                 <strong>Publicado: </strong>
                 {formatDate(job.createdAt)}
