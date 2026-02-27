@@ -6,7 +6,6 @@
     width: 75vw;
     margin:  10px 1rem;
     border-bottom: #006d97 solid 3px;
-
 }
 
 .search-bar {
@@ -17,11 +16,16 @@
 }
 
 
-
 .search-input,
-.location-input {
+.location-input,
+.status-filter {
     padding: 10px 16px;
     border: 2px solid #d1d1d1;
+}
+
+.status-filter{
+    color: gray;
+    height: 3rem;
 }
 
 .search-input {
@@ -43,6 +47,7 @@
     background-color: #006d97;
     color: white;
     cursor: pointer;
+    margin-left: 1px;
 }
 
 .search-btn:hover {

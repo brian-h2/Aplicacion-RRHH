@@ -52,11 +52,7 @@ code {
 
 /* Style general for the componente ReusableJoDetail */
 
-.headerRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+
 
 .jobTitle {
   font-size: 1.4rem;

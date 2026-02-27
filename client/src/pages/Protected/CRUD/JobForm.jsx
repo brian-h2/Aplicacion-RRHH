@@ -1,6 +1,6 @@
 import React from 'react';
 
-const JobForm = ({ jobData, handleChange, handleSubmit, buttonLabel }) => {
+const JobForm = ({ jobData, handleChange, handleSubmit, buttonLabel, handleChangeFile }) => {
   return (
     <div className="job-form-component">
       <form onSubmit={handleSubmit}>
@@ -81,6 +81,12 @@ const JobForm = ({ jobData, handleChange, handleSubmit, buttonLabel }) => {
           value={jobData.linkedinLink}
           onChange={handleChange}
           placeholder="LinkedIn Link"
+        />
+        <input 
+          type="file"
+          name="image"
+          accept="image/*"
+          onChange={(e) => handleChangeFile(e)}
         />
         <button type="submit" className="submit-btn">
           {buttonLabel}

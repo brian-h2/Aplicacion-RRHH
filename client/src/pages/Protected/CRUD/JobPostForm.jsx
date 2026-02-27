@@ -11,6 +11,11 @@ const JobPostForm = () => {
   const [newJobId, setNewJobId] = useState(null);
   const navigate = useNavigate();
   const { fetchJobPosts } = useContext(JobContext);
+  const [imageFile, setImageFile] = useState(null);
+
+  const handleChangeFile = (e) => {
+    setImageFile(e.target.files[0]);
+  };
 
 
   // Define initial state for the form
@@ -40,9 +45,10 @@ const JobPostForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    console.log('Submitting job data:', jobData, imageFile);
     try {
       // Use service function to post a new job
-      const createdJob = await postJob(jobData);
+      const createdJob = await postJob(jobData, imageFile);
       setShowModal(true);
       setModalMessage('Publicado correctamente.');
       setNewJobId(createdJob._id); // Save the ID of the new job
@@ -83,6 +89,7 @@ const JobPostForm = () => {
       <div className='prediv-postform'></div>
       <JobForm
         jobData={jobData}
+        handleChangeFile={handleChangeFile}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         buttonLabel="Publicar"
