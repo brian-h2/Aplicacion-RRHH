@@ -1,95 +1,126 @@
 import React from 'react';
 
-const JobForm = ({ jobData, handleChange, handleSubmit, buttonLabel, handleChangeFile, handleRemoveImage   }) => {
+const JobForm = ({
+  register,
+  errors,
+  handleSubmit,
+  buttonLabel,
+  handleChangeFile,
+  handleRemoveImage,
+  imageUrl,
+  disabled,
+  footerActions
+}) => {
   return (
     <div className="job-form-component">
       <form onSubmit={handleSubmit}>
+
+        {/* TÍTULO */}
         <input
           type="text"
-          name="title"
-          value={jobData.title}
-          onChange={handleChange}
           placeholder="Titulo de trabajo"
-          required
+          {...register('title')}
         />
+        {errors.title && <span className="error">{errors.title.message}</span>}
+
+        {/* EMPRESA */}
         <input
           type="text"
-          name="company"
-          value={jobData.company}
-          onChange={handleChange}
           placeholder="Empresa"
-          required
+          {...register('company')}
         />
+        {errors.company && <span className="error">{errors.company.message}</span>}
+
+        {/* UBICACIÓN */}
         <input
           type="text"
-          name="locationTerm"
-          value={jobData.locationTerm}
-          onChange={handleChange}
           placeholder="Ubicación"
-          required
+          {...register('locationTerm')}
         />
+        {errors.locationTerm && (
+          <span className="error">{errors.locationTerm.message}</span>
+        )}
+
+        {/* CATEGORÍA */}
         <input
           type="text"
-          name="category"
-          value={jobData.category}
-          onChange={handleChange}
           placeholder="Palabra Clave, Categoria, Trabajo relacionado, etc"
+          {...register('category')}
         />
+        {errors.category && <span className="error">{errors.category.message}</span>}
+
+        {/* CÓDIGO */}
         <input
           type="text"
-          name="applicationCode"
-          value={jobData.applicationCode}
-          onChange={handleChange}
-          placeholder="Codigo de Referecia en Email"
-          required
+          placeholder="Codigo de Referencia en Email"
+          {...register('applicationCode')}
         />
-        <select name="employmentType" value={jobData.employmentType} onChange={handleChange}>
-          <option value="empty">-</option>
+
+        {/* TIPO DE EMPLEO */}
+        <select {...register('employmentType')}>
+          <option value="">-</option>
           <option value="Full-time">Full-time</option>
           <option value="Part-time">Part-time</option>
         </select>
-        <select name="employmentStyle" value={jobData.employmentStyle} onChange={handleChange}>
-          <option value="empty">-</option>
+        {errors.employmentType && (
+          <span className="error">{errors.employmentType.message}</span>
+        )}
+
+        {/* MODALIDAD */}
+        <select {...register('employmentStyle')}>
+          <option value="">-</option>
           <option value="Presencial">Presencial</option>
           <option value="Remoto">Remoto</option>
           <option value="Hibrida">Híbrida</option>
         </select>
+
+        {/* DESCRIPCIÓN */}
         <textarea
-          name="description"
-          value={jobData.description}
-          onChange={handleChange}
           placeholder="Descripción"
-          required
+          {...register('description')}
         />
+        {errors.description && (
+          <span className="error">{errors.description.message}</span>
+        )}
+
+        {/* SUELDO */}
         <input
           type="text"
-          name="salaryRange"
-          value={jobData.salaryRange}
-          onChange={handleChange}
           placeholder="Rango de sueldo"
+          {...register('salaryRange')}
         />
+        {errors.salaryRange && (
+          <span className="error">{errors.salaryRange.message}</span>
+        )}
+
+        {/* EMAIL */}
         <input
           type="email"
-          name="contactEmail"
-          value={jobData.contactEmail}
-          onChange={handleChange}
           placeholder="Email de contacto"
+          {...register('contactEmail')}
         />
+        {errors.contactEmail && (
+          <span className="error">{errors.contactEmail.message}</span>
+        )}
+
+        {/* LINKEDIN */}
         <input
           type="url"
-          name="linkedinLink"
-          value={jobData.linkedinLink}
-          onChange={handleChange}
           placeholder="LinkedIn Link"
+          {...register('linkedinLink')}
         />
-        {jobData.imageUrl ? (
+        {errors.linkedinLink && (
+          <span className="error">{errors.linkedinLink.message}</span>
+        )}
+
+        {/* IMAGEN */}
+        {imageUrl ? (
           <div className="image-preview">
             <img
-              src={jobData.imageUrl}
+              src={imageUrl}
               alt="Imagen del trabajo"
-              style={{ width: "200px", display: "block", marginBottom: "10px" }}
+              style={{ width: '200px', display: 'block', marginBottom: '10px' }}
             />
-
             <button type="button" onClick={handleRemoveImage}>
               Borrar imagen
             </button>
@@ -97,14 +128,21 @@ const JobForm = ({ jobData, handleChange, handleSubmit, buttonLabel, handleChang
         ) : (
           <input
             type="file"
-            name="image"
             accept="image/*"
             onChange={handleChangeFile}
           />
         )}
+
+        {/* SUBMIT */}
         <button type="submit" className="submit-btn">
           {buttonLabel}
         </button>
+
+        {footerActions && (
+          <div className="extra-actions">
+            {footerActions}
+          </div>
+        )}
       </form>
     </div>
   );

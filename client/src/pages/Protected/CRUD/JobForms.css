@@ -77,6 +77,33 @@
     border: none;
 }
 
+.error {
+  color: #d32f2f;              /* rojo accesible */
+  font-size: 0.85rem;
+  margin-top: 4px;
+  display: block;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.restore-btn {
+  background: #2e7d32;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.restore-btn:hover {
+  background: #1b5e20;
+}
+
 /* Tablets and large phones (landscape mode) */
 @media (max-width: 1024px) {
   .job-form-component {

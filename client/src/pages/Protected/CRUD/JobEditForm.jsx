@@ -1,123 +1,140 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Modal from '../../../components/Modal';
 import { getJobPost, updateJobPost } from './JobPostService';
 import JobForm from './JobForm';
-import "./JobForms.css"
+import './JobForms.css';
 import { JobContext } from '../Jobs/JobsContext';
+import { restoreJobPost } from './JobPostService';
 
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { jobSchema } from '../../../schemas/jobSchema';
 
 const JobEditForm = () => {
-  const { jobId } = useParams(); // Get jobId from the URL parameters
-  const [jobData, setJobData] = useState(null); // State to store the job details to be edited
-  const [showModal, setShowModal] = useState(false); // State to control modal visibility
-  const [modalMessage, setModalMessage] = useState(''); // State to store modal message
+  const { jobId } = useParams();
   const navigate = useNavigate();
   const { fetchJobPosts } = useContext(JobContext);
 
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+  const [imageFile, setImageFile] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
+  const [isDeleted, setIsDeleted] = useState(false); // State to track if the job is deleted
 
-  // Fetch job details to prefill the form when component mounts
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(jobSchema),
+  });
+
   useEffect(() => {
-    if (jobId) {
-      const fetchJob = async () => {
-        try {
-          const data = await getJobPost(jobId); // Fetch the specific job post details using its ID
-          setJobData(data); // Set the fetched data in the state to prefill the form
-        } catch (error) {
-          console.error('Failed to fetch job details', error);
-        }
-      };
-      fetchJob();
-    }
-  }, [jobId]);
+    const fetchJob = async () => {
+      try {
+        const data = await getJobPost(jobId);
+        reset(data);  
+        setImageUrl(data.imageUrl || null);
+        setIsDeleted(data.isDeleted); // Set the isDeleted state based on the fetched data
+      } catch (error) {
+        console.error('Failed to fetch job details', error);
+      }
+    };
 
-  const handleRemoveImage = () => {
-    setJobData(prev => ({
-      ...prev,
-      imageUrl: "",
-      imageFile: null
-    }));
+    if (jobId) fetchJob();
+  }, [jobId, reset]);
+
+  // State to track if the job is deleted
+  const handleRestore = async () => {
+    try {
+      await restoreJobPost(jobId);
+      setModalMessage('El trabajo fue reabierto correctamente.');
+      setShowModal(true);
+      setIsDeleted(false);
+    } catch (error) {
+      setModalMessage('No se pudo reabrir el trabajo.');
+      setShowModal(true);
+    }
   };
 
   const handleChangeFile = (e) => {
-  setJobData(prev => ({
-    ...prev,
-      imageFile: e.target.files[0]
-    }));
+    setImageFile(e.target.files[0]);
   };
 
+  const handleRemoveImage = () => {
+    setImageUrl('');
+    setImageFile(null);
+  };
 
-  // Handle form submission for updating a job post
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    console.log("Submitting job update with data:", jobData);
-
+  // 🔼 Submit con FormData
+  const onSubmit = async (data) => {
     const formData = new FormData();
 
-    Object.entries(jobData).forEach(([key, value]) => {
-      if (
-        value !== null &&
-        value !== undefined &&
-        value !== "" &&
-        key !== "imageFile"
-      ) {
+    Object.entries(data).forEach(([key, value]) => {
+      if (value !== null && value !== undefined && value !== '') {
         formData.append(key, value);
       }
     });
 
-    if (jobData.imageFile) {
-      formData.append("image", jobData.imageFile);
+    if (imageFile) {
+      formData.append('image', imageFile);
     }
 
-    if (jobData.imageUrl === "") {
-      formData.append("imageUrl", "");
+    if (imageUrl === '') {
+      formData.append('imageUrl', '');
     }
 
     try {
       await updateJobPost(jobId, formData);
-      setModalMessage("Actualizado correctamente.");
+      setModalMessage('Actualizado correctamente.');
       setShowModal(true);
     } catch (error) {
-      setModalMessage("No fue posible actualizar, intente nuevamente.");
+      setModalMessage('No fue posible actualizar, intente nuevamente.');
       setShowModal(true);
     }
   };
 
-  // Handle changes to form inputs and update the job data in state
-  const handleChange = (e) => {
-    setJobData({ ...jobData, [e.target.name]: e.target.value });
-  };
-
-  // Close the modal dialog
   const closeModal = () => {
-    fetchJobPosts()
-     setShowModal(false);
-    navigate(`/dashboard/job/${jobId}`)
+    fetchJobPosts();
+    setShowModal(false);
+    navigate(`/dashboard/job/${jobId}`);
   };
-
-  // Show a loading message if the job data has not been fetched yet
-  if (!jobData) return <div>Loading...</div>;
 
   const handleUndo = () => {
-    navigate(`/dashboard/job/${jobId}`)
- }
+    navigate(`/dashboard/job/${jobId}`);
+  };
 
-  // Render the form and modal component
   return (
     <div>
       <div className="actionbutton">
-      <span className="material-icons actionbtn" onClick={handleUndo} >undo</span>
-
+        <span className="material-icons actionbtn" onClick={handleUndo}>
+          undo
+        </span>
       </div>
+
       <JobForm
-        jobData={jobData}
-        handleChange={handleChange}
-        handleSubmit={handleSubmit}
+        register={register}
+        errors={errors}
+        handleSubmit={handleSubmit(onSubmit)}
         handleChangeFile={handleChangeFile}
         handleRemoveImage={handleRemoveImage}
+        imageUrl={imageUrl}
         buttonLabel="Actualizar"
+        disabled={isDeleted} 
+        footerActions={
+          isDeleted && (
+            <button
+              type="button"
+              className="restore-btn"
+              onClick={handleRestore}
+            >
+              Reabrir trabajo
+            </button>
+          )}
       />
+
       {showModal && <Modal message={modalMessage} onClose={closeModal} />}
     </div>
   );

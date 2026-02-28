@@ -119,7 +119,7 @@ router.get("/:id", async (req, res) => {
 // Update a job post (requires authentication)
 router.put("/:id", authMiddleware,upload.single("image"), async (req, res) => {
 
-  try {
+  try {                             
     const updateData = { ...req.body };
 
     // 🔴 borrar explícito

@@ -4,10 +4,10 @@
   font-family: 'Inter', sans-serif;
   text-align: center;
   padding: 2rem 4rem;
-  background-image: url(https://portal.andina.pe/EDPfotografia3/Thumbnail/2023/08/16/000985849W.webp);
+  background-image: url('../../sources/footer.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: 120% 10%;
+  background-position: 100% 34%;
 }
 
 .footer-content {

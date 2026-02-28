@@ -5,7 +5,6 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 router.post("/", (req, res) => {
 
-    console.log("Datos recibidos:", req.body);
     const { nombre, telefono, email, empresa } = req.body;
     // Validación de campos
     if (!nombre || !telefono || !email || !empresa) {
