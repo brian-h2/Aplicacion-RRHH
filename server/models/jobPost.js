@@ -4,11 +4,11 @@ const mongoose = require("mongoose");
 
 const jobPostSchema = new mongoose.Schema({
   title: { type: String, required: true },
-  company: { type: String },
+  company: { type: String, required: true },
   locationTerm: { type: String },
-  description: { type: String },
+  description: { type: String, required: true },
   postedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  category: { type: String },
+  category: { type: String, required: true },
   applicationCode: {type: String},
   salaryRange: { type: String },
   employmentType: { type: String },
