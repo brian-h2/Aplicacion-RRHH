@@ -33,6 +33,8 @@ const authMiddleware = async (req, res, next) => {
 
 // Create a new job post (requires authentication)
 router.post("/", upload.single("image"), async (req, res) => {
+
+  console.log(req.body);
     
   const jobPost = new JobPost({
     ...req.body, // Use the userId from the verified session
@@ -106,6 +108,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     const jobPost = await JobPost.findById(req.params.id);
+    console.log(jobPost);
     if (!jobPost) {
       return res.status(404).json({ message: "Job Post not found" });
     }
@@ -119,7 +122,7 @@ router.get("/:id", async (req, res) => {
 // Update a job post (requires authentication)
 router.put("/:id", authMiddleware,upload.single("image"), async (req, res) => {
 
-  try {
+  try {                             
     const updateData = { ...req.body };
 
     // 🔴 borrar explícito
