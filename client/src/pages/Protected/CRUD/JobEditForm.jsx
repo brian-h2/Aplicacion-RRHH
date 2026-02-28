@@ -5,6 +5,7 @@ import { getJobPost, updateJobPost } from './JobPostService';
 import JobForm from './JobForm';
 import './JobForms.css';
 import { JobContext } from '../Jobs/JobsContext';
+import { restoreJobPost } from './JobPostService';
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -19,6 +20,7 @@ const JobEditForm = () => {
   const [modalMessage, setModalMessage] = useState('');
   const [imageFile, setImageFile] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
+  const [isDeleted, setIsDeleted] = useState(false); // State to track if the job is deleted
 
   const {
     register,
@@ -29,13 +31,13 @@ const JobEditForm = () => {
     resolver: zodResolver(jobSchema),
   });
 
-  // 🔽 Cargar datos del backend
   useEffect(() => {
     const fetchJob = async () => {
       try {
         const data = await getJobPost(jobId);
-        reset(data);              // 👈 precarga inputs
+        reset(data);  
         setImageUrl(data.imageUrl || null);
+        setIsDeleted(data.isDeleted); // Set the isDeleted state based on the fetched data
       } catch (error) {
         console.error('Failed to fetch job details', error);
       }
@@ -43,6 +45,19 @@ const JobEditForm = () => {
 
     if (jobId) fetchJob();
   }, [jobId, reset]);
+
+  // State to track if the job is deleted
+  const handleRestore = async () => {
+    try {
+      await restoreJobPost(jobId);
+      setModalMessage('El trabajo fue reabierto correctamente.');
+      setShowModal(true);
+      setIsDeleted(false);
+    } catch (error) {
+      setModalMessage('No se pudo reabrir el trabajo.');
+      setShowModal(true);
+    }
+  };
 
   const handleChangeFile = (e) => {
     setImageFile(e.target.files[0]);
@@ -107,6 +122,17 @@ const JobEditForm = () => {
         handleRemoveImage={handleRemoveImage}
         imageUrl={imageUrl}
         buttonLabel="Actualizar"
+        disabled={isDeleted} 
+        footerActions={
+          isDeleted && (
+            <button
+              type="button"
+              className="restore-btn"
+              onClick={handleRestore}
+            >
+              Reabrir trabajo
+            </button>
+          )}
       />
 
       {showModal && <Modal message={modalMessage} onClose={closeModal} />}

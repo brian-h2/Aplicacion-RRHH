@@ -86,20 +86,20 @@ export const deleteJobPost = (jobId) => {
 };
 
 // Function to restore a deleted job post
-export const restoreJobPost = (jobId) => {
+export const restoreJobPost = async (id) => {
   return jobService
-    .post(`/restore/${jobId}`, null, {
+  .post(`/restore/${id}`, undefined, {
       headers: {
-        'Content-Type': 'application/json',
-        ...getAuthHeader(),
+        ...getAuthHeader(), // si es JWT
       },
-    })
-    .then((res) => res.data)
-    .catch((error) => {
-      console.error('Error restoring job post:', error);
-      throw error;
-    });
+  })
+  .then((res) => res.data)
+  .catch((error) => {
+    console.error('Error restoring job post:', error);
+    throw error;
+  });
 };
+
 
 // Function to fetch all job posts
 export const getAllJobPosts = (searchTerm = '', locationTerm = '', statusTerm = '') => {

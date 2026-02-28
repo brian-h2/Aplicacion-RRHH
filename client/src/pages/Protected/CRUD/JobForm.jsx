@@ -8,6 +8,8 @@ const JobForm = ({
   handleChangeFile,
   handleRemoveImage,
   imageUrl,
+  disabled,
+  footerActions
 }) => {
   return (
     <div className="job-form-component">
@@ -135,6 +137,12 @@ const JobForm = ({
         <button type="submit" className="submit-btn">
           {buttonLabel}
         </button>
+
+        {footerActions && (
+          <div className="extra-actions">
+            {footerActions}
+          </div>
+        )}
       </form>
     </div>
   );
