@@ -124,7 +124,7 @@
 .wholeJobDiv{
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     background-color: white;
-    height: 87vh;
+    height: 95vh; 
     margin:  0 auto;
     padding: 0.5rem 2rem;
     overflow-y: scroll;
